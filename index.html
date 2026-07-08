@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>کافی‌لند</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+<style>
+/* تمام استایل‌ها به‌صورت کامل */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--b:#3E2723;--m:#5D4037;--l:#8D6E63;--a:#C8956C;--bg:#F5F0EB;--w:#fff;--t:#2C1810;--g:#9E8E82;--d:#E8DDD3;--ok:#4CAF50;--no:#E53935}
+body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--t);max-width:480px;margin:0 auto;min-height:100vh;overflow-x:hidden;padding-bottom:70px}
+.hdr{background:var(--w);padding:6px 12px;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.hd-t{display:flex;align-items:center;justify-content:space-between}
+.hd-left{display:flex;align-items:center;gap:4px}
+.hd-left .admin-btn{width:32px;height:32px;border-radius:8px;border:none;background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--m)}
+.hd-left .menu-btn{width:32px;height:32px;border-radius:8px;border:none;background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:var(--m)}
+.hd-logo{font-size:14px;font-weight:800;color:var(--b);cursor:pointer;flex:1;text-align:center}
+.hd-logo small{font-weight:400;color:var(--g);font-size:9px}
+.hd-sub{font-size:10px;color:var(--g);margin:2px 0 4px;display:flex;align-items:center;justify-content:space-between}
+.hd-sub .phone{display:flex;align-items:center;gap:3px;font-size:13px;font-weight:700;color:var(--m)}
+.hd-sub .phone .iconify{font-size:14px}
+.hd-sub .phone a{color:var(--m);text-decoration:none}
+.hd-bt{display:flex;align-items:center;gap:6px;margin-top:2px}
+.sb{flex:1;display:flex;align-items:center;background:var(--bg);border-radius:8px;padding:4px 8px;gap:4px}
+.sb input{border:none;background:none;outline:none;font-family:inherit;font-size:11px;width:100%}
+.soc-r{display:flex;gap:4px}
+.soc-b{display:flex;align-items:center;gap:2px;padding:3px 6px;border-radius:6px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:9px;color:var(--l)}
+.soc-b.off{opacity:.3;pointer-events:none}
+.cg-bar{background:var(--w);padding:8px 12px;margin-top:4px;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.cg-sc{display:flex;overflow-x:auto;gap:10px;scrollbar-width:none;padding:4px 0}
+.cg-sc::-webkit-scrollbar{display:none}
+.cg-i{display:flex;flex-direction:column;align-items:center;min-width:70px;cursor:pointer;padding:6px 4px;border-radius:10px;transition:.15s;background:transparent;border:2px solid transparent}
+.cg-i:hover,.cg-i.on{background:var(--bg);border-color:var(--d)}
+.cg-i .cat-icon{font-size:32px;color:var(--m);margin-bottom:2px}
+.cg-i.on .cat-icon{color:var(--b)}
+.cg-i span{font-size:11px;color:var(--g);font-weight:600;margin-top:1px}
+.cg-i.on span{color:var(--b);font-weight:700}
+.cg-sub{display:flex;flex-wrap:wrap;gap:8px;padding:8px 6px 4px;background:var(--bg);border-radius:10px;margin:6px 0 2px;border:1px solid var(--d);min-height:20px}
+.cg-sub .sub-item{padding:6px 16px;background:var(--w);border-radius:16px;font-size:12px;font-weight:600;color:var(--g);cursor:pointer;border:1px solid var(--d);transition:.15s;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.cg-sub .sub-item.on{background:var(--m);color:#fff;border-color:var(--m)}
+.cg-sub .sub-item:hover{transform:scale(1.03)}
+.sh{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 6px}
+.sh h2{font-size:13px;font-weight:700;color:var(--b)}
+.of-sc{display:flex;overflow-x:auto;gap:8px;padding:0 12px 4px;scrollbar-width:none}
+.of-sc::-webkit-scrollbar{display:none}
+.of-c{min-width:130px;max-width:130px;background:var(--w);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);flex-shrink:0;cursor:pointer}
+.of-c .oi{width:100%;height:80px;object-fit:cover;background:#EDE8E3;display:flex;align-items:center;justify-content:center}
+.of-c .oi img{width:100%;height:100%;object-fit:cover}
+.of-c .oi .iconify{font-size:32px;color:#D5CFC8}
+.of-c .of-n{font-size:9px;font-weight:600;padding:4px 6px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.of-c .of-p{font-size:10px;font-weight:800;padding:0 6px 4px}
+.pgr{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 12px 110px}
+.pc{background:var(--w);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.pc .pi{width:100%;height:0;padding-bottom:60%;background:#EDE8E3;position:relative;overflow:hidden;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pc .pi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pc .pi .ph{font-size:32px;color:#D5CFC8}
+.pc .pi .iconify{font-size:32px;color:#D5CFC8}
+.pn{font-size:10px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;padding:4px 6px 0;min-height:24px;cursor:pointer}
+.pn:hover{color:var(--m)}
+.pd{font-size:8px;color:var(--g);padding:0 6px 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp{font-size:11px;font-weight:800;color:var(--m);direction:ltr;text-align:left;padding:0 6px}
+.pu{font-size:7px;color:var(--g);padding:0 6px 2px}
+.po{padding:0 6px 2px}.og{margin-bottom:1px}.ol{font-size:8px;font-weight:600;color:var(--l);margin-bottom:1px}
+.ors{display:flex;flex-wrap:wrap;gap:2px 4px}
+.or{display:inline-flex;align-items:center;gap:1px;font-size:8px;cursor:pointer}
+.or input{accent-color:var(--m);width:9px;height:9px}
+.pq{display:flex;align-items:center;justify-content:center;gap:0;padding:0 6px 2px}
+.qb{width:20px;height:20px;border-radius:4px;border:1.5px solid var(--d);background:var(--w);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:700;color:var(--m);user-select:none}
+.qv{width:22px;text-align:center;font-size:10px;font-weight:700}
+.ba{width:calc(100% - 12px);margin:0 6px 6px;padding:5px;background:var(--m);color:#fff;border:none;border-radius:6px;font-family:inherit;font-size:9px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px}
+.ba:active{background:var(--b)}.ba.dn{background:var(--ok)}
+.bv{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--w);border-top:1px solid var(--d);display:flex;justify-content:space-around;padding:3px 0 6px;z-index:100}
+.nv{display:flex;flex-direction:column;align-items:center;gap:1px;cursor:pointer;padding:2px 6px;position:relative;border:none;background:none;font-family:inherit}
+.nv .iconify{font-size:18px;color:var(--g)}.nv span{font-size:8px;color:var(--g);font-weight:500}
+.nv.on .iconify{color:var(--m)}.nv.on span{color:var(--m);font-weight:700}
+.cb{position:absolute;top:-2px;right:-1px;background:var(--no);color:#fff;font-size:7px;font-weight:700;min-width:14px;height:14px;border-radius:7px;display:flex;align-items:center;justify-content:center;direction:ltr;padding:0 2px;border:2px solid var(--w)}
+.pg{display:none}.pg.on{display:block}
+.cw{padding:12px 10px 110px}
+.ce{text-align:center;padding:30px 20px}.ce .iconify{font-size:40px;color:#D5CFC8}.ce h3{font-size:12px;color:var(--g);margin:8px 0}
+.c-acts{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.c-acts button{flex:1;padding:6px;border-radius:8px;border:none;font-family:inherit;font-size:9px;font-weight:600;cursor:pointer;min-width:60px}
+.bds{background:#FFF3F0;color:var(--no)}.bda{background:var(--bg);color:var(--g)}
+.tb{width:100%;border-collapse:collapse;background:var(--w);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:10px;font-size:9px}
+.tb thead{background:var(--m)}.tb th{padding:5px 2px;font-size:8px;font-weight:700;color:#fff;text-align:center}
+.tb td{padding:5px 2px;text-align:center;border-bottom:1px solid var(--bg);vertical-align:middle}
+.tb .rt{font-weight:700;color:var(--m);direction:ltr}
+.tb .tf td{background:#F5E6D3;font-size:10px;font-weight:800;color:var(--b);padding:6px 2px}
+.co{font-size:7px;color:var(--l);margin-top:1px}
+.cqi{display:flex;align-items:center;justify-content:center;gap:2px}
+.cqi button{width:18px;height:18px;border-radius:4px;border:1px solid var(--d);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:11px;font-weight:700;color:var(--m)}
+.cqi span{min-width:14px;text-align:center;font-weight:700;font-size:10px}
+.cr{color:#ccc;cursor:pointer;font-size:12px;background:none;border:none}
+.cs{accent-color:var(--no);width:12px;height:12px}
+.fm{background:var(--w);border-radius:10px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:10px}
+.fm h3{font-size:11px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:4px}
+.fg{margin-bottom:6px}.fg label{display:block;font-size:9px;font-weight:600;color:var(--g);margin-bottom:2px}
+.fg input{width:100%;padding:6px 8px;border:1.5px solid var(--d);border-radius:8px;font-family:inherit;font-size:12px;outline:none}
+.fg input:focus{border-color:var(--m)}
+.gb{width:100%;padding:10px;background:var(--m);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
+.iv{padding:12px 12px 110px;text-align:center}
+.iv img{width:100%;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.1);margin-bottom:10px}
+.ia{display:flex;gap:6px}
+.ia button{flex:1;padding:10px;border:none;border-radius:10px;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px}
+.bk{background:var(--bg);color:var(--t);margin-bottom:6px;width:100%;padding:8px;border:none;border-radius:10px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:3px}
+.pf{padding:20px 16px 110px;text-align:center}
+.pfa{width:50px;height:50px;border-radius:50%;background:var(--m);margin:12px auto;display:flex;align-items:center;justify-content:center}
+.pfa .iconify{font-size:24px;color:#fff}
+.pf h3{font-size:13px;font-weight:700;margin-bottom:3px}.pf>p{font-size:10px;color:var(--g);margin-bottom:14px}
+.pmu{background:var(--w);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.pmi{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--bg);cursor:pointer}
+.pmi:last-child{border:none}
+.pmi .iconify{font-size:16px;color:var(--m)}.pmi span{flex:1;text-align:right;font-size:11px;font-weight:500}
+.hamburger-menu{display:none;position:fixed;top:52px;right:0;width:300px;max-width:85%;height:calc(100vh - 52px);background:var(--w);box-shadow:-2px 0 12px rgba(0,0,0,.08);z-index:999;overflow-y:auto;padding:12px 6px 20px;border-radius:0 0 0 12px}
+.hamburger-menu.open{display:block}
+.ham-item{margin-bottom:2px}
+.ham-row{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:8px;cursor:pointer;transition:.1s;border-bottom:1px solid var(--bg)}
+.ham-row:hover{background:var(--bg)}
+.ham-row .iconify{font-size:18px;color:var(--m)}
+.ham-row .label{flex:1;font-size:12px;font-weight:500;color:var(--t)}
+.ham-row .arrow{font-size:14px;color:var(--g);transition:.2s}
+.ham-row .arrow.open{transform:rotate(90deg)}
+.ham-children{padding-right:20px;border-right:2px solid var(--d);display:none}
+.ham-children.open{display:block}
+.ham-leaf{color:var(--m);font-weight:600}
+.ham-close{position:sticky;top:0;background:var(--w);padding:6px 10px;display:flex;justify-content:flex-end;border-bottom:1px solid var(--d);margin-bottom:8px}
+.ham-close button{background:none;border:none;font-size:20px;cursor:pointer;color:var(--g)}
+.cat-tree{padding:12px 12px 110px}
+.tree-header{display:flex;align-items:center;gap:6px;padding:8px 12px;background:var(--w);border-radius:12px;margin-bottom:14px;border:1px solid var(--d);box-shadow:0 2px 6px rgba(0,0,0,.04)}
+.tree-header .back-btn{width:36px;height:36px;border-radius:10px;border:none;background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--m);transition:.2s}
+.tree-header .back-btn:hover{background:var(--d)}
+.tree-header .breadcrumb{font-size:12px;color:var(--g);flex:1;overflow-x:auto;white-space:nowrap;direction:ltr;text-align:left}
+.tree-header .breadcrumb span{cursor:pointer;color:var(--m);font-weight:600;padding:2px 6px;border-radius:4px;transition:.15s}
+.tree-header .breadcrumb span:hover{background:var(--bg)}
+.tree-item{margin-bottom:6px}
+.tree-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--w);border-radius:12px;cursor:pointer;border:1px solid var(--d);transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.tree-row:hover{background:var(--bg);border-color:var(--l);transform:translateX(-4px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.tree-row .iconify{font-size:22px;color:var(--m)}
+.tree-row .label{flex:1;font-size:14px;font-weight:600;color:var(--t)}
+.tree-row .badge{font-size:10px;color:var(--g);background:var(--bg);padding:2px 10px;border-radius:12px}
+.tree-children{margin-right:20px;padding-right:14px;border-right:3px solid var(--d);display:none;transition:.3s}
+.tree-children.open{display:block}
+.tree-products{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.tree-products .pc{margin-bottom:6px}
+.prod-detail{padding:12px 12px 110px}
+.prod-detail .back{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;background:var(--bg);border-radius:8px;font-size:11px;font-weight:500;cursor:pointer;margin-bottom:10px;border:none;font-family:inherit;color:var(--m)}
+.prod-detail .main-img{width:100%;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.1);margin-bottom:8px}
+.prod-detail .gallery{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.prod-detail .gallery::-webkit-scrollbar{display:none}
+.prod-detail .gallery img{width:50px;height:50px;object-fit:cover;border-radius:6px;border:2px solid var(--d);cursor:pointer;flex-shrink:0}
+.prod-detail .gallery img.on{border-color:var(--m)}
+.prod-detail h2{font-size:15px;font-weight:700;margin:6px 0 3px}
+.prod-detail .desc{font-size:11px;color:var(--g);line-height:1.6;margin:4px 0 8px}
+.prod-detail .price{font-size:15px;font-weight:800;color:var(--m);direction:ltr;text-align:left;margin-bottom:6px}
+.prod-detail .unit{font-size:10px;color:var(--g)}
+.prod-detail .opts{margin:10px 0}
+.prod-detail .opts .og{margin-bottom:4px}
+.prod-detail .opts .ol{font-size:10px;font-weight:600;color:var(--l)}
+.prod-detail .opts .ors{display:flex;flex-wrap:wrap;gap:3px 6px}
+.prod-detail .opts .or{font-size:10px}
+.prod-detail .opts .or input{width:11px;height:11px}
+.prod-detail .qty-row{display:flex;align-items:center;gap:8px;margin:8px 0}
+.prod-detail .qty-row .qb{width:26px;height:26px;font-size:14px}
+.prod-detail .qty-row .qv{font-size:13px;min-width:26px;text-align:center}
+.prod-detail .add-btn{width:100%;padding:10px;background:var(--m);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;margin-top:4px}
+.prod-detail .back-btn{width:100%;padding:10px;background:var(--bg);color:var(--t);border:1.5px solid var(--d);border-radius:10px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;margin-top:6px}
+.prod-detail .back-btn:hover{background:var(--d)}
+#pgD .of-sc, #pgD .sh, #pgD .cg-bar{display:none !important}
+#pgD .pgr{padding-bottom:110px}
+#admPg{display:none;position:fixed;inset:0;z-index:9999;background:var(--bg);overflow-y:auto;font-size:14px}
+#admPg.sh{display:block}
+.a-hd{background:var(--w);padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 1px 4px rgba(0,0,0,.06);position:sticky;top:0;z-index:10}
+.a-hd .bk-b{width:32px;height:32px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:18px;color:var(--m)}
+.a-hd h3{flex:1;font-size:14px;font-weight:700}
+.a-hd .pv-b{padding:6px 12px;background:var(--m);color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px}
+.a-bd{padding:16px}
+.ats{display:flex;gap:0;margin-bottom:16px;background:var(--w);border-radius:10px;padding:3px;flex-wrap:wrap;border:1px solid var(--d)}
+.abn{flex:1;padding:8px 4px;text-align:center;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;border:none;background:none;font-family:inherit;color:var(--g)}
+.abn.on{background:var(--m);color:#fff}
+.apl{display:none}.apl.on{display:block}
+.f2{margin-bottom:12px}.f2 label{display:block;font-size:12px;font-weight:600;color:var(--g);margin-bottom:4px}
+.f2 input,.f2 select,.f2 textarea{width:100%;padding:9px 12px;border:2px solid var(--d);border-radius:8px;font-family:inherit;font-size:13px;outline:none}
+.f2 input:focus,.f2 select:focus{border-color:var(--m)}
+.f2 textarea{height:70px;resize:none;font-family:monospace;direction:ltr;text-align:left;font-size:11px}
+.fw{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fw3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.bt{width:100%;padding:10px;background:var(--m);color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px}
+.bt.gn{background:var(--ok)}.bt.rd{background:var(--no)}
+.di{display:flex;align-items:center;gap:8px;padding:10px;background:var(--w);border-radius:10px;margin-bottom:8px;border:1px solid var(--d)}
+.di .nf{flex:1;min-width:0}.di .nf h4{font-weight:600;font-size:12px;line-height:1.4}
+.di .nf p{color:var(--g);font-size:11px;direction:ltr}
+.dl{width:28px;height:28px;border-radius:7px;background:var(--bg);border:1px solid var(--d);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#ccc;font-size:14px;flex-shrink:0}
+.dl:active{color:var(--no);border-color:var(--no)}
+.sw{position:relative;width:42px;height:22px;flex-shrink:0}.sw input{opacity:0;width:0;height:0}
+.sl{position:absolute;inset:0;background:#ccc;border-radius:11px;cursor:pointer;transition:.2s}
+.sl:before{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;bottom:2px;right:2px;transition:.2s}
+.sw input:checked+.sl{background:var(--ok)}.sw input:checked+.sl:before{transform:translateX(-20px)}
+.shi{background:var(--w);border-radius:10px;padding:14px;margin-bottom:14px;border:1px solid var(--d)}
+.ig{background:#F5E6D3;border-radius:10px;padding:12px;margin-bottom:14px}
+.ig h4{font-size:12px;font-weight:700;margin-bottom:6px}.ig p{font-size:11px;line-height:1.8;color:var(--m)}
+.oti{background:var(--w);border-radius:10px;padding:12px;margin-bottom:8px;border:1px solid var(--d)}
+.oti h4{font-size:12px;font-weight:700;margin-bottom:6px}
+.otg{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+.otag{background:var(--bg);border:1px solid var(--d);border-radius:5px;padding:3px 8px;font-size:11px;display:flex;align-items:center;gap:3px}
+.otag .x{cursor:pointer;color:#ccc;font-size:12px}
+.oar{display:flex;gap:4px}.oar input{flex:1;padding:6px 10px;border:2px solid var(--d);border-radius:6px;font-family:inherit;font-size:12px;outline:none}
+.oar button{padding:6px 12px;background:var(--m);color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer}
+.ocr{display:flex;flex-wrap:wrap;gap:6px}
+.och{display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer}.och input{accent-color:var(--m)}
+.soc-a{display:flex;align-items:center;gap:8px;padding:10px;background:var(--w);border-radius:10px;margin-bottom:8px;border:1px solid var(--d)}
+.soc-a .nf{flex:1}
+.soc-a .nf h4{font-size:12px;font-weight:600}
+.soc-a .nf input{width:100%;margin-top:4px;padding:6px 8px;border:1.5px solid var(--d);border-radius:6px;font-family:inherit;font-size:11px;outline:none;direction:ltr;text-align:left}
+.imup{border:2px dashed var(--d);border-radius:8px;padding:10px;text-align:center;cursor:pointer;color:var(--g);font-size:11px;margin-top:6px}
+.imup:hover{border-color:var(--m);color:var(--m)}
+.imup .iconify{font-size:20px;display:block;margin:0 auto 4px}
+.nr{text-align:center;padding:30px 20px;color:var(--g);font-size:12px;grid-column:1/-1}
+.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-80px);background:var(--t);color:#fff;padding:10px 20px;border-radius:10px;font-size:12px;font-weight:600;z-index:99999;transition:transform .3s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.2)}
+.toast.sh{transform:translateX(-50%) translateY(0)}.toast.ok{background:var(--ok)}.toast.er{background:var(--no)}
+</style>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+<div id="mainSite">
+<div class="hdr">
+  <div class="hd-t">
+    <div class="hd-left">
+      <button class="admin-btn" onclick="openAdm()" title="ورود مدیر">⚙️</button>
+      <button class="menu-btn" onclick="toggleHamburger()">☰</button>
+    </div>
+    <div class="hd-logo" onclick="goHome()">☕ کافی‌لند <small>| اصفهان</small></div>
+    <div style="width:32px"></div>
+  </div>
+  <div class="hd-sub">
+    <span class="phone"><span class="iconify" data-icon="mdi:phone"></span> <a href="tel:09907932481">۰۹۹۰۷۹۳۲۴۸۱</a></span>
+    <span style="font-size:9px;color:var(--g)">ارتباط با ما در شبکه‌های اجتماعی</span>
+  </div>
+  <div class="hd-bt">
+    <div class="sb"><span class="iconify" data-icon="mdi:magnify" style="font-size:14px;color:var(--g)"></span><input type="text" id="sI" placeholder="جستجو..." oninput="doSearch()"></div>
+    <div class="soc-r" id="socRow"></div>
+  </div>
+</div>
+<!-- ===== منوی همبرگر ===== -->
+<div class="hamburger-menu" id="hamburgerMenu">
+  <div class="ham-close"><button onclick="toggleHamburger()">✕</button></div>
+  <div id="hamTree"></div>
+  <div style="margin-top:16px;border-top:1px solid var(--d);padding-top:12px">
+    <div class="ham-row" style="font-weight:700;color:var(--m);pointer-events:none"><span class="iconify" data-icon="mdi:chat"></span><span class="label">ارتباط با ما در شبکه‌های اجتماعی</span></div>
+    <div style="padding-right:12px;margin-top:4px;display:flex;flex-direction:column;gap:4px">
+      <a href="https://rubika.ir/Coffee_price" target="_blank" style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:var(--bg);text-decoration:none;color:var(--t);font-size:12px;font-weight:500"><span class="iconify" data-icon="mdi:chat-processing" style="font-size:18px;color:#2A9D8F"></span> روبیکا</a>
+      <a href="https://eitaa.com/Coffee_price" target="_blank" style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:var(--bg);text-decoration:none;color:var(--t);font-size:12px;font-weight:500"><span class="iconify" data-icon="mdi:send-circle" style="font-size:18px;color:#E94E77"></span> ایتا</a>
+      <a href="https://ble.ir/coffee_price" target="_blank" style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:var(--bg);text-decoration:none;color:var(--t);font-size:12px;font-weight:500"><span class="iconify" data-icon="mdi:message-text" style="font-size:18px;color:#0088CC"></span> بله</a>
+      <a href="https://t.me/coffee_price" target="_blank" style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:var(--bg);text-decoration:none;color:var(--t);font-size:12px;font-weight:500"><span class="iconify" data-icon="mdi:telegram" style="font-size:18px;color:#0088CC"></span> تلگرام</a>
+      <a href="http://wa.me/989907932481" target="_blank" style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:var(--bg);text-decoration:none;color:var(--t);font-size:12px;font-weight:500"><span class="iconify" data-icon="mdi:whatsapp" style="font-size:18px;color:#25D366"></span> واتساپ</a>
+    </div>
+  </div>
+</div>
+<!-- ===== صفحه خانه ===== -->
+<div class="pg on" id="pgH">
+  <div class="cg-bar">
+    <div class="cg-sc" id="cgGrid"></div>
+    <div class="cg-sub" id="cgSub"></div>
+  </div>
+  <div id="ofSec" style="display:block"><div class="sh"><h2>🔥 فروش شگفت‌انگیز</h2></div><div class="of-sc" id="ofScr"></div></div>
+  <div id="sgSec" style="display:block"><div class="sh"><h2>⭐ پیشنهاد ویژه</h2></div><div class="of-sc" id="sgScr"></div></div>
+  <div class="sh"><h2 id="pTtl">همه محصولات</h2></div>
+  <div class="pgr" id="pGrid"></div>
+</div>
+<!-- ===== سایر صفحات ===== -->
+<div class="pg" id="pgS"><div class="sh"><h2 id="sTtl">نتایج جستجو</h2></div><div class="pgr" id="sRes" style="padding-bottom:110px"></div></div>
+<div class="pg" id="pgC"><div class="cw" id="cartW"></div></div>
+<div class="pg" id="pgI"><div class="iv" id="invW"></div></div>
+<div class="pg" id="pgP"><div class="pf"><div class="pfa"><span class="iconify" data-icon="mdi:store"></span></div><h3 id="prfN">کافی‌لند</h3><p id="prfA">اصفهان، خیابان سلیمانی</p><div class="pmu"><div class="pmi"><span class="iconify" data-icon="mdi:phone"></span><span>تماس با ما</span></div><div class="pmi"><span class="iconify" data-icon="mdi:map-marker"></span><span>آدرس فروشگاه</span></div></div></div></div>
+<div class="pg" id="pgD"><div class="cat-tree" id="catTreeContainer"></div></div>
+<div class="pg" id="pgPD"><div class="prod-detail" id="prodDetailContainer"></div></div>
+<div class="pg" id="pgContact">
+  <div class="cw" style="padding-bottom:110px">
+    <h2 style="font-size:15px;font-weight:700;margin-bottom:10px;text-align:center">📱 ارتباط با ما در شبکه‌های اجتماعی</h2>
+    <div style="background:var(--w);border-radius:10px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--bg);border-radius:8px;font-size:14px;font-weight:700"><span class="iconify" data-icon="mdi:phone" style="font-size:20px;color:var(--m)"></span> <a href="tel:09907932481" style="color:var(--m);text-decoration:none">۰۹۹۰۷۹۳۲۴۸۱</a></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--bg);border-radius:8px;font-size:13px"><span class="iconify" data-icon="mdi:map-marker" style="font-size:20px;color:var(--m)"></span> اصفهان، خیابان سلیمانی</div>
+      </div>
+    </div>
+    <h3 style="font-size:13px;font-weight:700;margin:14px 0 10px">🌐 کانال‌های ما</h3>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <a href="https://rubika.ir/Coffee_price" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--w);border-radius:8px;border:1px solid var(--d);text-decoration:none;color:var(--t);font-size:13px;font-weight:500"><img src="https://cdn.jsdelivr.net/gh/sina-rb/rubika-icon@main/rubika.svg" width="24" height="24" style="border-radius:4px" onerror="this.style.display='none'"><span>روبیکا</span></a>
+      <a href="https://eitaa.com/Coffee_price" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--w);border-radius:8px;border:1px solid var(--d);text-decoration:none;color:var(--t);font-size:13px;font-weight:500"><img src="https://eitaa.com/favicon.ico" width="24" height="24" style="border-radius:4px" onerror="this.style.display='none'"><span>ایتا</span></a>
+      <a href="https://ble.ir/coffee_price" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--w);border-radius:8px;border:1px solid var(--d);text-decoration:none;color:var(--t);font-size:13px;font-weight:500"><span class="iconify" data-icon="mdi:message-text" style="font-size:24px;color:#0088CC"></span><span>بله</span></a>
+      <a href="https://t.me/coffee_price" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--w);border-radius:8px;border:1px solid var(--d);text-decoration:none;color:var(--t);font-size:13px;font-weight:500"><span class="iconify" data-icon="mdi:telegram" style="font-size:24px;color:#0088CC"></span><span>تلگرام</span></a>
+      <a href="http://wa.me/989907932481" target="_blank" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--w);border-radius:8px;border:1px solid var(--d);text-decoration:none;color:var(--t);font-size:13px;font-weight:500"><span class="iconify" data-icon="mdi:whatsapp" style="font-size:24px;color:#25D366"></span><span>واتساپ</span></a>
+    </div>
+    <button class="bk" style="margin-top:12px" onclick="goPage('h',document.querySelectorAll('.nv')[0])">← بازگشت به خانه</button>
+  </div>
+</div>
+</div>
+<!-- ===== پنل مدیریت ===== -->
+<div id="admPg">
+<div class="a-hd"><button class="bk-b" onclick="closeAdm()">→</button><h3>پنل مدیریت</h3><button class="pv-b" onclick="window.open(location.href,'_blank')"><span class="iconify" data-icon="mdi:eye" style="font-size:14px"></span>پیش‌نمایش</button></div>
+<div class="a-bd">
+<div class="ats"><button class="abn on" onclick="aTab('st',this)">⚙️ تنظیمات</button><button class="abn" onclick="aTab('ct',this)">📂 دسته‌بندی</button><button class="abn" onclick="aTab('pr',this)">📦 محصولات</button><button class="abn" onclick="aTab('op',this)">🏷️ ویژگی‌ها</button><button class="abn" onclick="aTab('im',this)">⚡ ایمپورت</button></div>
+<div class="apl on" id="xst">
+<div class="shi"><h4 style="font-size:13px;font-weight:700;margin-bottom:10px">🏪 اطلاعات فروشگاه</h4><div class="f2"><label>نام فروشگاه</label><input type="text" id="sN" value="کافی‌لند"></div><div class="f2"><label>آدرس</label><input type="text" id="sA" value="اصفهان، خیابان سلیمانی"></div><div class="f2"><label>شماره تماس</label><input type="tel" id="sPh" value="09907932481" dir="ltr" style="text-align:left"></div><button class="bt gn" onclick="saveShopInfo()">ذخیره</button></div>
+<div class="shi"><h4 style="font-size:13px;font-weight:700;margin-bottom:10px">🔑 تغییر رمز عبور</h4><div class="f2"><label>رمز فعلی</label><input type="password" id="oldPw" placeholder="رمز فعلی"></div><div class="f2"><label>رمز جدید</label><input type="password" id="newPw" placeholder="رمز جدید"></div><button class="bt" onclick="changePw()">تغییر رمز</button></div>
+<div class="shi"><h4 style="font-size:13px;font-weight:700;margin-bottom:10px">💬 پیام‌رسان‌ها</h4><div id="socAdmList"></div></div>
+</div>
+<div class="apl" id="xct">
+<h4 style="font-size:13px;font-weight:700;margin-bottom:10px">➕ دسته جدید</h4><div class="f2"><label>نام</label><input type="text" id="cNm" placeholder="مثلاً: عربیکا"></div><div class="f2"><label>زیرمجموعه کدام؟</label><select id="cPar"></select></div><button class="bt" onclick="addCat()">افزودن</button><h4 style="font-size:13px;font-weight:700;margin:16px 0 10px">📂 لیست</h4><div id="cList"></div>
+</div>
+<div class="apl" id="xpr">
+<h4 style="font-size:13px;font-weight:700;margin-bottom:10px">➕ محصول جدید</h4>
+<div class="f2"><label>نام محصول *</label><input type="text" id="pNm" placeholder="نام محصول" oninput="document.getElementById('pSearchResult').innerHTML=''"></div>
+<div class="f2"><label>دسته‌بندی</label><select id="pCat"></select></div>
+<div class="f2"><label>توضیح کوتاه</label><input type="text" id="pDesc" placeholder="اختیاری"></div>
+<div class="fw3"><div class="f2"><label>واحد</label><select id="pUnit"><option>کیلوگرم</option><option>گرم</option><option>تعداد</option><option>بسته</option></select></div><div class="f2"><label>قیمت خرید</label><input type="number" id="pBuy" placeholder="0" dir="ltr"></div><div class="f2"><label>قیمت فروش *</label><input type="number" id="pSell" placeholder="0" dir="ltr"></div></div>
+<div class="f2">
+  <label>لینک عکس</label>
+  <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+    <input type="text" id="pUrl" placeholder="https://..." dir="ltr" style="flex:1;min-width:120px">
+    <button class="bt" style="padding:6px 12px;font-size:11px;margin:0;width:auto;background:var(--l)" onclick="searchImage()">🔍 جستجوی عکس</button>
+  </div>
+  <div id="pSearchResult" style="margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <img id="pPreviewImg" src="" alt="پیش‌نمایش" style="max-width:80px;max-height:80px;border-radius:6px;display:none;border:1px solid var(--d)">
+    <span id="pSearchStatus" style="font-size:11px;color:var(--g)"></span>
+  </div>
+</div>
+<div class="f2"><label>آپلود عکس (فشرده خودکار)</label><input type="file" id="pFile" accept="image/*" style="font-size:12px"></div>
+<div class="f2"><label>ویژگی‌ها</label><div id="pOptsContainer"></div></div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px"><label class="och"><input type="checkbox" id="pIsOf"> فروش شگفت‌انگیز</label><label class="och"><input type="checkbox" id="pIsSg"> پیشنهاد ویژه</label></div>
+<button class="bt" onclick="addProd()">افزودن محصول</button><h4 style="font-size:13px;font-weight:700;margin:16px 0 10px">📦 محصولات</h4><div id="pList"></div>
+</div>
+<div class="apl" id="xop">
+<h4 style="font-size:13px;font-weight:700;margin-bottom:10px">➕ ویژگی جدید</h4><div class="f2"><label>عنوان</label><input type="text" id="oNm" placeholder="مثلاً: رنگ"></div><div class="f2"><label>مقادیر (کاما)</label><input type="text" id="oVals" placeholder="مشکی, قهوه‌ای"></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><label class="sw"><input type="checkbox" id="oAct" checked><span class="sl"></span></label><span style="font-size:12px;color:var(--g)">نمایش برای کاربر</span></div><button class="bt gn" onclick="addOpt()">افزودن</button><h4 style="font-size:13px;font-weight:700;margin:16px 0 10px">🏷️ لیست</h4><div id="oList"></div>
+</div>
+<div class="apl" id="xim">
+<div class="ig"><h4>📋 ایمپورت قیمت از اکسل</h4><p>ستون نام و قیمت رو انتخاب ← Ctrl+C ← اینجا Ctrl+V<br>ستون ۱=نام | ۲=قیمت فروش | ۳=قیمت خرید</p></div>
+<div class="f2"><label>داده‌ها:</label><textarea id="impData" placeholder="قهوه عربیکا	420000	280000"></textarea></div>
+<button class="bt" onclick="importPrices()">⚡ اعمال</button>
+<div style="margin-top:16px;border-top:2px solid var(--d);padding-top:14px">
+  <h4 style="font-size:13px;font-weight:700;margin-bottom:10px">📊 خروجی و ورودی Excel</h4>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="bt gn" onclick="exportExcel()" style="flex:1;min-width:120px">📤 خروجی اکسل (قفل)</button>
+    <button class="bt" onclick="document.getElementById('importExcelInput').click()" style="flex:1;min-width:120px;background:var(--l)">📥 ایمپورت اکسل</button>
+    <input type="file" id="importExcelInput" accept=".xlsx,.xls" style="display:none" onchange="importExcel(event)">
+  </div>
+  <p style="font-size:10px;color:var(--g);margin-top:6px">فایل اکسل فقط ستون قیمت قابل ویرایش است. سایر ستون‌ها قفل می‌باشند.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ===== نوار پایین ===== -->
+<div class="bv">
+<button class="nv on" onclick="goHome();this.classList.add('on')"><span class="iconify" data-icon="mdi:home"></span><span>خانه</span></button>
+<button class="nv" onclick="goPage('d',this)"><span class="iconify" data-icon="mdi:view-grid-outline"></span><span>دسته‌بندی</span></button>
+<button class="nv" onclick="goPage('c',this)"><span class="iconify" data-icon="mdi:cart-outline"></span><span>سبد خرید</span><span class="cb" id="cBadge" style="display:none">0</span></button>
+<button class="nv" onclick="goPage('p',this)"><span class="iconify" data-icon="mdi:store"></span><span>فروشگاه</span></button>
+</div>
+
+<script>
+// ============================================================
+// داده‌های اولیه (پیش‌فرض)
+// ============================================================
+var DC = [
+  { id: 1, n: 'قهوه', p: 0 },
+  { id: 2, n: 'عربیکا', p: 1 },
+  { id: 3, n: 'اتیوپی', p: 2 },
+  { id: 4, n: 'کلمبیا', p: 2 },
+  { id: 5, n: 'روبوستا', p: 1 },
+  { id: 6, n: 'ویتنام', p: 5 },
+  { id: 7, n: 'برزیل', p: 5 },
+  { id: 8, n: 'تجهیزات', p: 0 },
+  { id: 9, n: 'اسپرسوساز', p: 8 },
+  { id: 10, n: 'نیمه‌اتوماتیک', p: 9 },
+  { id: 11, n: 'تمام اتوماتیک', p: 9 },
+  { id: 12, n: 'آسیاب', p: 8 },
+  { id: 13, n: 'صنعتی', p: 12 },
+  { id: 14, n: 'خانگی', p: 12 },
+  { id: 15, n: 'اکسسوری', p: 8 },
+  { id: 16, n: 'مواد اولیه', p: 0 },
+  { id: 17, n: 'شیر', p: 16 },
+  { id: 18, n: 'سیروپ', p: 16 }
+];
+var DO = [
+  { id: 1, n: 'رنگ', a: true, v: ['مشکی', 'قهوه‌ای', 'سفید'] },
+  { id: 2, n: 'سایز', a: false, v: ['کوچک', 'متوسط', 'بزرگ'] },
+  { id: 3, n: 'بسته‌بندی', a: true, v: ['فله', 'پاکتی ۲۵۰g', 'پاکتی ۵۰۰g'] }
+];
+var DS = [
+  { id: 'rubika', n: 'روبیکا', ic: 'mdi:chat-processing', lk: 'https://rubika.ir/Coffee_price', a: true },
+  { id: 'eitaa', n: 'ایتا', ic: 'mdi:send-circle', lk: 'https://eitaa.com/Coffee_price', a: true },
+  { id: 'ble', n: 'بله', ic: 'mdi:message-text', lk: 'https://ble.ir/coffee_price', a: true },
+  { id: 'telegram', n: 'تلگرام', ic: 'mdi:telegram', lk: 'https://t.me/coffee_price', a: true },
+  { id: 'whatsapp', n: 'واتساپ', ic: 'mdi:whatsapp', lk: 'http://wa.me/989907932481', a: true }
+];
+var DP = [
+  { id: 1, n: 'قهوه عربیکا اتیوپی ییرگاچف', c: 3, u: 'کیلوگرم', b: 280000, l: 420000, img: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=200&h=200&fit=crop', o: [3], dc: 'عیطی با طعم میوه', isOf: true, isSg: false },
+  { id: 2, n: 'قهوه عربیکا اتیوپی سیدامو', c: 3, u: 'کیلوگرم', b: 260000, l: 390000, img: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=200&h=200&fit=crop', o: [3], dc: '', isOf: false, isSg: true },
+  { id: 3, n: 'قهوه عربیکا کلمبیا', c: 4, u: 'کیلوگرم', b: 300000, l: 450000, img: 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=200&h=200&fit=crop', o: [3], dc: 'اسپشیالتی لوکس', isOf: false, isSg: true },
+  { id: 4, n: 'روبوستا ویتنام', c: 6, u: 'کیلوگرم', b: 180000, l: 280000, img: '', o: [3], dc: '', isOf: false, isSg: false },
+  { id: 5, n: 'روبوستا برزیل', c: 7, u: 'کیلوگرم', b: 200000, l: 310000, img: '', o: [3], dc: '', isOf: false, isSg: false },
+  { id: 6, n: 'اسپرسوساز EM-2000', c: 10, u: 'تعداد', b: 6500000, l: 8500000, img: 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=200&h=200&fit=crop', o: [1], dc: 'نیمه‌اتوماتیک حرفه‌ای', isOf: true, isSg: false },
+  { id: 7, n: 'اسپرسوساز EM-3500', c: 11, u: 'تعداد', b: 12000000, l: 15800000, img: 'https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=200&h=200&fit=crop', o: [1], dc: 'تمام اتوماتیک', isOf: false, isSg: true },
+  { id: 8, n: 'آسیاب صنعتی BG-500', c: 13, u: 'تعداد', b: 9000000, l: 12000000, img: 'https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=200&h=200&fit=crop', o: [1], dc: 'فلت بور حرفه‌ای', isOf: false, isSg: false },
+  { id: 9, n: 'آسیاب خانگی', c: 14, u: 'تعداد', b: 2200000, l: 3200000, img: '', o: [1], dc: '', isOf: false, isSg: false },
+  { id: 10, n: 'تامپر استیل', c: 15, u: 'تعداد', b: 300000, l: 450000, img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&h=200&fit=crop', o: [], dc: '', isOf: false, isSg: false },
+  { id: 11, n: 'پیچنر فولادی', c: 15, u: 'تعداد', b: 180000, l: 280000, img: '', o: [], dc: '', isOf: false, isSg: false },
+  { id: 12, n: 'شیر پاستوریزه', c: 17, u: 'تعداد', b: 25000, l: 38000, img: '', o: [], dc: 'شیر تازه روز', isOf: false, isSg: true },
+  { id: 13, n: 'سیروپ وانیل', c: 18, u: 'تعداد', b: 85000, l: 135000, img: '', o: [], dc: '', isOf: false, isSg: false }
+];
+
+// ============================================================
+// بارگذاری داده‌ها از localStorage
+// ============================================================
+var cats = (function() {
+  try {
+    var stored = localStorage.getItem('kl_c');
+    return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DC));
+  } catch(e) { return JSON.parse(JSON.stringify(DC)); }
+})();
+
+var prods = (function() {
+  try {
+    var stored = localStorage.getItem('kl_p');
+    return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DP));
+  } catch(e) { return JSON.parse(JSON.stringify(DP)); }
+})();
+
+var opts = (function() {
+  try {
+    var stored = localStorage.getItem('kl_o');
+    return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DO));
+  } catch(e) { return JSON.parse(JSON.stringify(DO)); }
+})();
+
+var socs = (function() {
+  try {
+    var stored = localStorage.getItem('kl_s');
+    return stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DS));
+  } catch(e) { return JSON.parse(JSON.stringify(DS)); }
+})();
+
+var cart = (function() {
+  try {
+    var stored = localStorage.getItem('kl_r');
+    return stored ? JSON.parse(stored) : [];
+  } catch(e) { return []; }
+})();
+
+// ============================================================
+// متغیرهای عمومی
+// ============================================================
+var qt = {};
+var selCat = 1; // پیش‌فرض قهوه (id=1)
+var selSubCat = 0;
+var admIn = false;
+var invCvs = null;
+var selDel = [];
+var hideSpecials = false;
+var currentMode = 'home';
+var viewingProdId = null;
+
+var sN = localStorage.getItem('kl_sn') || 'کافی‌لند';
+var sA = localStorage.getItem('kl_sa') || 'اصفهان، خیابان سلیمانی';
+var sPh = localStorage.getItem('kl_sp') || '09907932481';
+var aPw = localStorage.getItem('kl_pw') || '123';
+
+// ============================================================
+// توابع کمکی
+// ============================================================
+function sv(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); } catch(e) { console.warn('خطا در ذخیره‌سازی:', e); }
+}
+
+function fp(n) {
+  try { return n.toLocaleString('fa-IR'); } catch(e) { return String(n); }
+}
+
+function toast(msg, type) {
+  var el = document.getElementById('toast');
+  if (!el) return;
+  el.textContent = msg;
+  el.className = 'toast sh' + (type ? ' ' + type : '');
+  clearTimeout(el._timer);
+  el._timer = setTimeout(function() { el.className = 'toast'; }, 2500);
+}
+
+function getLeafIds(pid) {
+  var ids = [pid];
+  cats.filter(function(c) { return c.p === pid; }).forEach(function(c) {
+    ids = ids.concat(getLeafIds(c.id));
+  });
+  return ids;
+}
+
+function getCategoryIcon(catName) {
+  var map = { 'قهوه': '☕', 'تجهیزات': '⚙️', 'مواد اولیه': '🧪' };
+  return map[catName] || '📁';
+}
+
+function getCategoryImage(catName) {
+  var map = {
+    'قهوه': 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=60&h=60&fit=crop&crop=center',
+    'تجهیزات': 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=60&h=60&fit=crop&crop=center',
+    'مواد اولیه': 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=60&h=60&fit=crop&crop=center'
+  };
+  return map[catName] || '';
+}
+
+// ============================================================
+// توابع رندر محصولات
+// ============================================================
+function buildOptsHtml(p) {
+  if (!p.o || !p.o.length) return '';
+  var aO = opts.filter(function(o) { return o.a && p.o.indexOf(o.id) !== -1; });
+  if (!aO.length) return '';
+  var h = '<div class="po">';
+  aO.forEach(function(o) {
+    h += '<div class="og"><div class="ol">' + o.n + ':</div><div class="ors">';
+    o.v.forEach(function(v, i) {
+      h += '<label class="or"><input type="radio" name="o-' + p.id + '-' + o.id + '" value="' + v + '"' + (i === 0 ? ' checked' : '') + '><span>' + v + '</span></label>';
+    });
+    h += '</div></div>';
+  });
+  return h + '</div>';
+}
+
+function getSelectedOpts(pid) {
+  var s = {};
+  var p = prods.find(function(x) { return x.id === pid; });
+  if (!p || !p.o) return s;
+  p.o.forEach(function(oid) {
+    var o = opts.find(function(x) { return x.id === oid; });
+    if (!o || !o.a) return;
+    var c = document.querySelector('input[name="o-' + pid + '-' + oid + '"]:checked');
+    if (c) s[o.n] = c.value;
+  });
+  return s;
+}
+
+function getCartKey(id, o) {
+  var k = String(id);
+  if (o) {
+    Object.keys(o).sort().forEach(function(kk) {
+      k += '|' + kk + ':' + o[kk];
+    });
+  }
+  return k;
+}
+
+function buildProductCard(p) {
+  try {
+    var inC = cart.find(function(c) { return c.k === getCartKey(p.id, getSelectedOpts(p.id)); });
+    var q = qt[p.id] || 1;
+    var optsHtml = buildOptsHtml(p);
+    var imgHtml = p.img ? '<img src="' + p.img + '" alt="' + p.n + '" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<span class=\\\'iconify\\\' data-icon=\\\'mdi:package-variant\\\' style=\\\'font-size:32px;color:#D5CFC8\\\'></span>\'">' :
+      '<span class="iconify" data-icon="mdi:package-variant" style="font-size:32px;color:#D5CFC8"></span>';
+    return '<div class="pc"><div class="pi" onclick="showProductDetail(' + p.id + ')">' + imgHtml + '</div><div class="pn" onclick="showProductDetail(' + p.id + ')">' + p.n + '</div>' +
+      (p.dc ? '<div class="pd">' + p.dc + '</div>' : '') +
+      '<div class="pp">' + fp(p.l) + '</div><div class="pu">تومان / ' + p.u + '</div>' +
+      optsHtml +
+      '<div class="pq"><button class="qb" onclick="changeQty(' + p.id + ',-1)">−</button><span class="qv">' + q + '</span><button class="qb" onclick="changeQty(' + p.id + ',1)">+</button></div>' +
+      '<button class="ba' + (inC ? ' dn' : '') + '" onclick="toggleCart(' + p.id + ')"><span class="iconify" data-icon="' + (inC ? 'mdi:check' : 'mdi:cart-plus') + '" style="font-size:12px"></span>' + (inC ? 'در سبد خرید' : 'افزودن') + '</button></div>';
+  } catch(e) {
+    console.warn('خطا در buildProductCard:', e);
+    return '<div class="pc">خطا در نمایش محصول</div>';
+  }
+}
+
+function renderProductGrid(list, containerId) {
+  var el = document.getElementById(containerId);
+  if (!el) return;
+  try {
+    if (!list || !list.length) {
+      el.innerHTML = '<div class="nr"><span class="iconify" data-icon="mdi:package-variant-remove" style="font-size:36px;display:block;margin-bottom:6px;color:#D5CFC8"></span>محصولی یافت نشد</div>';
+      return;
+    }
+    el.innerHTML = list.map(function(p) { return buildProductCard(p); }).join('');
+  } catch(e) {
+    console.warn('خطا در renderProductGrid:', e);
+    el.innerHTML = '<div class="nr">خطا در نمایش محصولات</div>';
+  }
+}
+
+// ============================================================
+// تابع اصلی renderProducts (رفع خطا)
+// ============================================================
+function renderProducts() {
+  try {
+    if (currentMode === 'home') {
+      renderHomeProducts();
+    }
+    renderSections();
+  } catch(e) {
+    console.warn('خطا در renderProducts:', e);
+  }
+}
+
+// ============================================================
+// منوی بالای صفحه
+// ============================================================
+function renderHomeMenu() {
+  try {
+    var top = cats.filter(function(c) { return c.p === 0; });
+    var html = '';
+    top.forEach(function(c) {
+      var icon = getCategoryIcon(c.n);
+      var isOn = (selCat === c.id);
+      var img = getCategoryImage(c.n);
+      html += '<div class="cg-i' + (isOn ? ' on' : '') + '" onclick="selectHomeCat(' + c.id + ')">';
+      if (img) {
+        html += '<img src="' + img + '" class="cat-icon" alt="' + c.n + '" loading="lazy" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid transparent">';
+      } else {
+        html += '<span class="cat-icon">' + icon + '</span>';
+      }
+      html += '<span>' + c.n + '</span>';
+      html += '</div>';
+    });
+    document.getElementById('cgGrid').innerHTML = html;
+    renderHomeSubMenu();
+  } catch(e) {
+    console.warn('خطا در renderHomeMenu:', e);
+  }
+}
+
+function renderHomeSubMenu() {
+  try {
+    var sub = cats.filter(function(c) { return c.p === selCat; });
+    var html = '';
+    if (sub.length && selCat !== 0) {
+      sub.forEach(function(s) {
+        html += '<div class="sub-item' + (selSubCat === s.id ? ' on' : '') + '" onclick="selectHomeSubCat(' + s.id + ')">' + s.n + '</div>';
+      });
+    }
+    document.getElementById('cgSub').innerHTML = html;
+  } catch(e) {
+    console.warn('خطا در renderHomeSubMenu:', e);
+  }
+}
+
+function selectHomeCat(id) {
+  selCat = id;
+  selSubCat = 0;
+  hideSpecials = true;
+  renderHomeMenu();
+  renderHomeProducts();
+  updateSpecialsVisibility();
+  syncHamburger(id);
+}
+
+function selectHomeSubCat(id) {
+  selSubCat = id;
+  hideSpecials = true;
+  renderHomeSubMenu();
+  renderHomeProducts();
+  updateSpecialsVisibility();
+}
+
+function renderHomeProducts() {
+  try {
+    var targetId = selSubCat || selCat;
+    var list;
+    if (targetId === 0) {
+      list = prods;
+    } else {
+      var ids = getLeafIds(targetId);
+      list = prods.filter(function(p) { return ids.indexOf(p.c) !== -1; });
+    }
+    var catName = cats.find(function(c) { return c.id === targetId; });
+    document.getElementById('pTtl').textContent = targetId === 0 ? 'همه محصولات' : (catName ? catName.n : '') || '';
+    renderProductGrid(list, 'pGrid');
+  } catch(e) {
+    console.warn('خطا در renderHomeProducts:', e);
+  }
+}
+
+function updateSpecialsVisibility() {
+  try {
+    var ofSec = document.getElementById('ofSec');
+    var sgSec = document.getElementById('sgSec');
+    if (hideSpecials || selCat !== 0) {
+      if (ofSec) ofSec.style.display = 'none';
+      if (sgSec) sgSec.style.display = 'none';
+    } else {
+      if (ofSec) ofSec.style.display = 'block';
+      if (sgSec) sgSec.style.display = 'block';
+    }
+  } catch(e) {
+    console.warn('خطا در updateSpecialsVisibility:', e);
+  }
+}
+
+// ============================================================
+// بخش‌های ویژه
+// ============================================================
+function renderSections() {
+  try {
+    var ofs = prods.filter(function(p) { return p.isOf; });
+    var sgs = prods.filter(function(p) { return p.isSg; });
+    var ofSec = document.getElementById('ofSec');
+    var sgSec = document.getElementById('sgSec');
+    if (ofSec) {
+      ofSec.style.display = (ofs.length && !hideSpecials && selCat === 0) ? 'block' : 'none';
+    }
+    if (sgSec) {
+      sgSec.style.display = (sgs.length && !hideSpecials && selCat === 0) ? 'block' : 'none';
+    }
+    var ofScr = document.getElementById('ofScr');
+    if (ofScr) {
+      ofScr.innerHTML = ofs.map(function(p) {
+        return '<div class="of-c" onclick="showProductDetail(' + p.id + ')"><div class="oi">' +
+          (p.img ? '<img src="' + p.img + '" alt="' + p.n + '" loading="lazy" onerror="this.parentElement.innerHTML=\'<span class=\\\'iconify\\\' data-icon=\\\'mdi:package-variant\\\' style=\\\'font-size:32px;color:#D5CFC8\\\'></span>\'">' :
+            '<span class="iconify" data-icon="mdi:package-variant" style="font-size:32px;color:#D5CFC8"></span>') +
+          '</div><div class="of-n">' + p.n + '</div><div class="of-p" style="color:var(--no)">' + fp(p.l) + '</div></div>';
+      }).join('');
+    }
+    var sgScr = document.getElementById('sgScr');
+    if (sgScr) {
+      sgScr.innerHTML = sgs.map(function(p) {
+        return '<div class="of-c" onclick="showProductDetail(' + p.id + ')"><div class="oi">' +
+          (p.img ? '<img src="' + p.img + '" alt="' + p.n + '" loading="lazy" onerror="this.parentElement.innerHTML=\'<span class=\\\'iconify\\\' data-icon=\\\'mdi:package-variant\\\' style=\\\'font-size:32px;color:#D5CFC8\\\'></span>\'">' :
+            '<span class="iconify" data-icon="mdi:package-variant" style="font-size:32px;color:#D5CFC8"></span>') +
+          '</div><div class="of-n">' + p.n + '</div><div class="of-p" style="color:var(--m)">' + fp(p.l) + '</div></div>';
+      }).join('');
+    }
+  } catch(e) {
+    console.warn('خطا در renderSections:', e);
+  }
+}
+
+// ============================================================
+// جستجو
+// ============================================================
+function doSearch() {
+  try {
+    var q = document.getElementById('sI').value.trim();
+    if (!q) {
+      goPage('h', document.querySelectorAll('.nv')[0]);
+      return;
+    }
+    var r = prods.filter(function(p) { return p.n.indexOf(q) !== -1; });
+    document.getElementById('sTtl').textContent = 'نتایج: "' + q + '"';
+    renderProductGrid(r, 'sRes');
+    goPage('s', null);
+  } catch(e) {
+    console.warn('خطا در doSearch:', e);
+  }
+}
+
+// ============================================================
+// سبد خرید
+// ============================================================
+function toggleCart(id) {
+  try {
+    var s = getSelectedOpts(id);
+    var k = getCartKey(id, s);
+    var idx = cart.findIndex(function(c) { return c.k === k; });
+    if (idx > -1) {
+      cart.splice(idx, 1);
+      toast('حذف شد');
+    } else {
+      cart.push({ k: k, id: id, q: qt[id] || 1, o: s });
+      toast('اضافه شد', 'ok');
+    }
+    sv('kl_r', cart);
+    updateBadge();
+    if (currentMode === 'home') renderHomeProducts();
+    else renderCategoryTree();
+    if (document.getElementById('pgPD').classList.contains('on')) showProductDetail(id);
+    if (document.getElementById('pgC').classList.contains('on')) renderCart();
+  } catch(e) {
+    console.warn('خطا در toggleCart:', e);
+  }
+}
+
+function changeQty(id, d) {
+  try {
+    qt[id] = Math.max(1, (qt[id] || 1) + d);
+    if (currentMode === 'home') renderHomeProducts();
+    else renderCategoryTree();
+    if (document.getElementById('pgPD').classList.contains('on')) showProductDetail(id);
+  } catch(e) {
+    console.warn('خطا در changeQty:', e);
+  }
+}
+
+function updateBadge() {
+  try {
+    var b = document.getElementById('cBadge');
+    if (!b) return;
+    if (cart.length) {
+      b.style.display = 'flex';
+      b.textContent = cart.length;
+    } else {
+      b.style.display = 'none';
+    }
+  } catch(e) {
+    console.warn('خطا در updateBadge:', e);
+  }
+}
+
+// ============================================================
+// صفحه تفصیلی محصول
+// ============================================================
+function showProductDetail(id) {
+  try {
+    viewingProdId = id;
+    var p = prods.find(function(pr) { return pr.id === id; });
+    if (!p) {
+      toast('محصول یافت نشد', 'er');
+      return;
+    }
+    var container = document.getElementById('prodDetailContainer');
+    if (!container) return;
+    var imgHtml = p.img ? '<img src="' + p.img + '" class="main-img" alt="' + p.n + '" loading="lazy">' :
+      '<div style="text-align:center;padding:30px;background:var(--bg);border-radius:10px;color:var(--g)"><span class="iconify" data-icon="mdi:package-variant" style="font-size:40px"></span></div>';
+    var galleryHtml = '<div class="gallery">';
+    if (p.img) galleryHtml += '<img src="' + p.img + '" class="on">';
+    galleryHtml += '</div>';
+    var optsHtml = '';
+    if (p.o && p.o.length) {
+      var aO = opts.filter(function(o) { return o.a && p.o.indexOf(o.id) !== -1; });
+      aO.forEach(function(o) {
+        optsHtml += '<div class="og"><div class="ol">' + o.n + ':</div><div class="ors">';
+        o.v.forEach(function(v, i) {
+          optsHtml += '<label class="or"><input type="radio" name="pd-o-' + p.id + '-' + o.id + '" value="' + v + '"' + (i === 0 ? ' checked' : '') + '><span>' + v + '</span></label>';
+        });
+        optsHtml += '</div></div>';
+      });
+    }
+    var q = qt[p.id] || 1;
+    var inC = cart.some(function(c) { return c.id === p.id && JSON.stringify(c.o) === JSON.stringify(getSelectedOpts(p.id)); });
+    container.innerHTML =
+      '<button class="back" onclick="goBackFromDetail()"><span class="iconify" data-icon="mdi:arrow-right"></span> بازگشت</button>' +
+      imgHtml + galleryHtml +
+      '<h2>' + p.n + '</h2>' +
+      (p.dc ? '<div class="desc">' + p.dc + '</div>' : '') +
+      '<div class="price">' + fp(p.l) + ' تومان</div>' +
+      '<div class="unit">واحد: ' + p.u + '</div>' +
+      (optsHtml ? '<div class="opts">' + optsHtml + '</div>' : '') +
+      '<div class="qty-row"><button class="qb" onclick="changeQty(' + p.id + ',-1)">−</button><span class="qv">' + q + '</span><button class="qb" onclick="changeQty(' + p.id + ',1)">+</button></div>' +
+      '<button class="add-btn" onclick="toggleCart(' + p.id + ')"><span class="iconify" data-icon="' + (inC ? 'mdi:check' : 'mdi:cart-plus') + '"></span>' + (inC ? 'در سبد خرید' : 'افزودن به سبد') + '</button>' +
+      '<button class="back-btn" onclick="goBackFromDetail()"><span class="iconify" data-icon="mdi:arrow-right"></span> بازگشت</button>';
+    goPage('pd', null);
+  } catch(e) {
+    console.warn('خطا در showProductDetail:', e);
+  }
+}
+
+function goBackFromDetail() {
+  try {
+    if (currentMode === 'home') goPage('h', document.querySelectorAll('.nv')[0]);
+    else if (currentMode === 'category') goPage('d', document.querySelectorAll('.nv')[1]);
+    else goPage('h', document.querySelectorAll('.nv')[0]);
+  } catch(e) {
+    console.warn('خطا در goBackFromDetail:', e);
+  }
+}
+
+// ============================================================
+// منوی همبرگر
+// ============================================================
+function toggleHamburger() {
+  try {
+    var m = document.getElementById('hamburgerMenu');
+    if (!m) return;
+    m.classList.toggle('open');
+    if (m.classList.contains('open')) buildHamburgerTree();
+  } catch(e) {
+    console.warn('خطا در toggleHamburger:', e);
+  }
+}
+
+function buildHamburgerTree() {
+  try {
+    var container = document.getElementById('hamTree');
+    if (!container) return;
+    container.innerHTML = buildHamTree(0);
+  } catch(e) {
+    console.warn('خطا در buildHamburgerTree:', e);
+  }
+}
+
+function buildHamTree(pid) {
+  try {
+    var children = cats.filter(function(c) { return c.p === pid; });
+    if (!children.length) return '';
+    var html = '';
+    children.forEach(function(c) {
+      var hasChild = cats.some(function(x) { return x.p === c.id; });
+      var isActive = (selCat === c.id || selSubCat === c.id);
+      html += '<div class="ham-item">';
+      html += '<div class="ham-row" onclick="hamSelect(' + c.id + ')">';
+      html += '<span class="iconify" data-icon="' + (hasChild ? 'mdi:folder-outline' : 'mdi:folder') + '"></span>';
+      html += '<span class="label' + (isActive ? ' ham-leaf' : '') + '">' + c.n + '</span>';
+      if (hasChild) html += '<span class="arrow" id="ham-arrow-' + c.id + '" onclick="event.stopPropagation();toggleHamChild(' + c.id + ')">▶</span>';
+      html += '</div>';
+      if (hasChild) {
+        html += '<div class="ham-children" id="ham-child-' + c.id + '">' + buildHamTree(c.id) + '</div>';
+      }
+      html += '</div>';
+    });
+    return html;
+  } catch(e) {
+    console.warn('خطا در buildHamTree:', e);
+    return '';
+  }
+}
+
+function toggleHamChild(id) {
+  try {
+    var el = document.getElementById('ham-child-' + id);
+    var arrow = document.getElementById('ham-arrow-' + id);
+    if (el) {
+      el.classList.toggle('open');
+      if (arrow) arrow.classList.toggle('open');
+    }
+  } catch(e) {
+    console.warn('خطا در toggleHamChild:', e);
+  }
+}
+
+function hamSelect(id) {
+  try {
+    var cat = cats.find(function(c) { return c.id === id; });
+    if (!cat) return;
+    var root = id;
+    while (cat.p !== 0) {
+      var p = cats.find(function(c) { return c.id === cat.p; });
+      if (!p) break;
+      cat = p;
+      root = cat.id;
+    }
+    selectHomeCat(root);
+    var path = [];
+    var cur = id;
+    while (cur !== 0) {
+      var c = cats.find(function(x) { return x.id === cur; });
+      if (!c) break;
+      path.unshift(c);
+      cur = c.p;
+    }
+    if (path.length > 0) {
+      var last = path[path.length - 1];
+      if (last.id !== root) selSubCat = last.id;
+      else selSubCat = 0;
+    }
+    renderHomeMenu();
+    renderHomeProducts();
+    updateSpecialsVisibility();
+    document.getElementById('hamburgerMenu').classList.remove('open');
+    document.getElementById('pGrid').scrollIntoView({ behavior: 'smooth' });
+  } catch(e) {
+    console.warn('خطا در hamSelect:', e);
+  }
+}
+
+function syncHamburger(id) {
+  try {
+    document.querySelectorAll('.ham-children').forEach(function(el) { el.classList.remove('open'); });
+    document.querySelectorAll('.ham-arrow').forEach(function(el) { el.classList.remove('open'); });
+    var path = [];
+    var cur = id;
+    while (cur !== 0) {
+      var c = cats.find(function(x) { return x.id === cur; });
+      if (!c) break;
+      path.unshift(c);
+      cur = c.p;
+    }
+    path.forEach(function(c) {
+      var el = document.getElementById('ham-child-' + c.id);
+      if (el) el.classList.add('open');
+      var arrow = document.getElementById('ham-arrow-' + c.id);
+      if (arrow) arrow.classList.add('open');
+    });
+  } catch(e) {
+    console.warn('خطا در syncHamburger:', e);
+  }
+}
+
+// ============================================================
+// صفحه دسته‌بندی (درخت)
+// ============================================================
+function renderCategoryTree(selectedId) {
+  try {
+    var container = document.getElementById('catTreeContainer');
+    if (!container) return;
+    var path = [];
+    var cur = selectedId || 0;
+    while (cur !== 0) {
+      var cat = cats.find(function(c) { return c.id === cur; });
+      if (!cat) break;
+      path.unshift(cat);
+      cur = cat.p;
+    }
+    var html = '<div class="tree-header"><button class="back-btn" onclick="goToTreeRoot()">←</button><div class="breadcrumb">';
+    if (path.length) {
+      html += '<span onclick="goToTreeRoot()">ریشه</span> / ';
+      path.forEach(function(c, i) {
+        if (i === path.length - 1) html += '<span style="color:var(--m);font-weight:700">' + c.n + '</span>';
+        else html += '<span onclick="goToTreeLevel(' + c.id + ')">' + c.n + '</span> / ';
+      });
+    } else {
+      html += '<span style="color:var(--m);font-weight:700">همه دسته‌ها</span>';
+    }
+    html += '</div></div>' + buildTree(selectedId || 0, 0);
+    container.innerHTML = html;
+  } catch(e) {
+    console.warn('خطا در renderCategoryTree:', e);
+  }
+}
+
+function goToTreeRoot() { renderCategoryTree(0); }
+function goToTreeLevel(id) { renderCategoryTree(id); }
+
+function buildTree(pid, level) {
+  try {
+    var children = cats.filter(function(c) { return c.p === pid; });
+    if (!children.length) {
+      var prodsInCat = prods.filter(function(p) { return p.c === pid; });
+      if (!prodsInCat.length) return '<div class="nr">محصولی در این دسته نیست</div>';
+      return '<div class="tree-products">' + prodsInCat.map(function(p) { return buildProductCard(p); }).join('') + '</div>';
+    }
+    var html = '';
+    children.forEach(function(c) {
+      var hasChild = cats.some(function(x) { return x.p === c.id; });
+      html += '<div class="tree-item"><div class="tree-row" onclick="toggleTreeNode(' + c.id + ')">';
+      html += '<span class="iconify" data-icon="' + (hasChild ? 'mdi:folder-outline' : 'mdi:folder') + '"></span>';
+      html += '<span class="label">' + c.n + '</span>';
+      var childCount = cats.filter(function(x) { return x.p === c.id; }).length;
+      if (childCount) html += '<span class="badge">' + childCount + '</span>';
+      html += '</div><div class="tree-children' + (pid !== 0 ? ' open' : '') + '" id="tree-child-' + c.id + '">' + buildTree(c.id, level + 1) + '</div></div>';
+    });
+    return html;
+  } catch(e) {
+    console.warn('خطا در buildTree:', e);
+    return '<div class="nr">خطا در نمایش درخت</div>';
+  }
+}
+
+function toggleTreeNode(id) {
+  try {
+    var el = document.getElementById('tree-child-' + id);
+    if (el) el.classList.toggle('open');
+  } catch(e) {
+    console.warn('خطا در toggleTreeNode:', e);
+  }
+}
+
+// ============================================================
+// سبد خرید (رندر)
+// ============================================================
+function renderCart() {
+  try {
+    var el = document.getElementById('cartW');
+    if (!el) return;
+    if (!cart.length) {
+      el.innerHTML = '<div class="ce"><span class="iconify" data-icon="mdi:cart-off"></span><h3>سبد خرید خالی است</h3></div>';
+      return;
+    }
+    var t = 0;
+    var r = cart.map(function(ci, idx) {
+      var p = prods.find(function(pr) { return pr.id === ci.id; });
+      if (!p) return '';
+      var rt = p.l * ci.q;
+      t += rt;
+      var os = '';
+      if (ci.o) {
+        Object.keys(ci.o).forEach(function(k) { os += k + ': ' + ci.o[k] + ' | '; });
+        os = os.slice(0, -3);
+      }
+      var chk = selDel.indexOf(ci.k) !== -1 ? 'checked' : '';
+      var editBtn = '<button class="cr" onclick="editCartItem(\'' + ci.k + '\')" title="ویرایش"><span class="iconify" data-icon="mdi:pencil" style="font-size:12px"></span></button>';
+      return '<tr style="background:' + (chk ? '#FFF3F0' : '') + '"><td><input type="checkbox" class="cs" ' + chk + ' onchange="toggleSel(\'' + ci.k + '\')"></td><td>' + (idx + 1) + '</td><td style="text-align:right;max-width:70px"><div style="font-size:9px;line-height:1.3">' + p.n + '</div>' + (os ? '<div class="co">' + os + '</div>' : '') + '</td><td style="font-size:9px">' + p.u + '</td><td><div class="cqi"><button onclick="changeCartQty(\'' + ci.k + '\',-1)">−</button><span>' + ci.q + '</span><button onclick="changeCartQty(\'' + ci.k + '\',1)">+</button></div></td><td style="direction:ltr;font-size:9px">' + fp(p.l) + '</td><td class="rt" style="font-size:9px">' + fp(rt) + '</td><td><div style="display:flex;gap:2px;justify-content:center">' + editBtn + '<button class="cr" onclick="removeCartItem(\'' + ci.k + '\')"><span class="iconify" data-icon="mdi:delete-outline" style="font-size:12px"></span></button></div></td></tr>';
+    }).join('');
+    el.innerHTML =
+      '<div class="c-acts"><button class="bds" onclick="delSelected()"' + (selDel.length ? '' : ' disabled') + '>🗑 حذف انتخاب‌شده (' + selDel.length + ')</button><button class="bda" onclick="clearCart()">🧹 پاک کردن کل سبد</button></div>' +
+      '<table class="tb"><thead><tr><th></th><th>ردیف</th><th>عنوان</th><th>واحد</th><th>تعداد</th><th>قیمت</th><th>جمع</th><th></th></tr></thead><tbody>' + r + '</tbody><tfoot><tr class="tf"><td colspan="6" style="text-align:left">جمع کل فاکتور</td><td colspan="2" style="direction:ltr">' + fp(t) + ' تومان</td></tr></tfoot></table>' +
+      '<div class="fm"><h3><span class="iconify" data-icon="mdi:account-edit"></span>اطلاعات خریدار</h3><div class="fg"><label>نام و نام خانوادگی</label><input type="text" id="cName" placeholder="نام مشتری"></div><div class="fg"><label>شماره موبایل</label><input type="tel" id="cPhone" placeholder="0912..." dir="ltr" style="text-align:left"></div><div class="fg"><label>شهر</label><input type="text" id="cCity" placeholder="مثلاً: اصفهان"></div></div>' +
+      '<button class="gb" onclick="genInvoice()"><span class="iconify" data-icon="mdi:receipt-text" style="font-size:16px"></span>تولید فاکتور</button>';
+  } catch(e) {
+    console.warn('خطا در renderCart:', e);
+  }
+}
+
+function changeCartQty(k, d) {
+  try {
+    var it = cart.find(function(c) { return c.k === k; });
+    if (!it) return;
+    it.q += d;
+    if (it.q < 1) cart = cart.filter(function(c) { return c.k !== k; });
+    sv('kl_r', cart);
+    updateBadge();
+    renderCart();
+  } catch(e) {
+    console.warn('خطا در changeCartQty:', e);
+  }
+}
+
+function toggleSel(k) {
+  try {
+    var i = selDel.indexOf(k);
+    if (i > -1) selDel.splice(i, 1);
+    else selDel.push(k);
+    renderCart();
+  } catch(e) {
+    console.warn('خطا در toggleSel:', e);
+  }
+}
+
+function delSelected() {
+  try {
+    cart = cart.filter(function(c) { return selDel.indexOf(c.k) === -1; });
+    selDel = [];
+    sv('kl_r', cart);
+    updateBadge();
+    renderCart();
+    toast('حذف شد');
+  } catch(e) {
+    console.warn('خطا در delSelected:', e);
+  }
+}
+
+function clearCart() {
+  try {
+    cart = [];
+    selDel = [];
+    sv('kl_r', cart);
+    updateBadge();
+    renderCart();
+    toast('سبد پاک شد');
+  } catch(e) {
+    console.warn('خطا در clearCart:', e);
+  }
+}
+
+function removeCartItem(k) {
+  try {
+    cart = cart.filter(function(c) { return c.k !== k; });
+    selDel = selDel.filter(function(x) { return x !== k; });
+    sv('kl_r', cart);
+    updateBadge();
+    renderCart();
+    toast('حذف شد');
+  } catch(e) {
+    console.warn('خطا در removeCartItem:', e);
+  }
+}
+
+// ============================================================
+// ویرایش آیتم سبد خرید
+// ============================================================
+function editCartItem(k) {
+  try {
+    var ci = cart.find(function(c) { return c.k === k; });
+    if (!ci) { toast('آیتم یافت نشد', 'er'); return; }
+    var p = prods.find(function(pr) { return pr.id === ci.id; });
+    if (!p) { toast('محصول یافت نشد', 'er'); return; }
+    var optsHtml = '';
+    if (p.o && p.o.length) {
+      var aO = opts.filter(function(o) { return o.a && p.o.indexOf(o.id) !== -1; });
+      aO.forEach(function(o) {
+        optsHtml += '<div class="og"><div class="ol">' + o.n + ':</div><div class="ors">';
+        o.v.forEach(function(v) {
+          var checked = (ci.o && ci.o[o.n] === v) ? 'checked' : '';
+          optsHtml += '<label class="or"><input type="radio" name="edit-' + p.id + '-' + o.id + '" value="' + v + '" ' + checked + '><span>' + v + '</span></label>';
+        });
+        optsHtml += '</div></div>';
+      });
+    }
+    var html = '<div style="background:var(--w);padding:16px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.1);margin-bottom:10px"><h4 style="font-size:13px;font-weight:700;margin-bottom:8px">ویرایش: ' + p.n + '</h4>';
+    if (optsHtml) html += optsHtml;
+    html += '<div class="pq" style="margin:8px 0"><button class="qb" onclick="editQty(\'' + k + '\',-1)">−</button><span class="qv" id="editQtyVal">' + ci.q + '</span><button class="qb" onclick="editQty(\'' + k + '\',1)">+</button></div>';
+    html += '<div style="display:flex;gap:6px"><button class="ba" onclick="saveEdit(\'' + k + '\')" style="flex:1">ذخیره</button><button class="ba" style="background:var(--bg);color:var(--t)" onclick="document.getElementById(\'editPanel\').innerHTML=\'\'">انصراف</button></div></div>';
+    var panel = document.getElementById('editPanel');
+    if (!panel) {
+      var pnl = document.createElement('div');
+      pnl.id = 'editPanel';
+      document.getElementById('cartW').prepend(pnl);
+      panel = pnl;
+    }
+    panel.innerHTML = html;
+  } catch(e) {
+    console.warn('خطا در editCartItem:', e);
+  }
+}
+
+function editQty(k, d) {
+  try {
+    var ci = cart.find(function(c) { return c.k === k; });
+    if (!ci) return;
+    ci.q = Math.max(1, ci.q + d);
+    var el = document.getElementById('editQtyVal');
+    if (el) el.textContent = ci.q;
+  } catch(e) {
+    console.warn('خطا در editQty:', e);
+  }
+}
+
+function saveEdit(k) {
+  try {
+    var ci = cart.find(function(c) { return c.k === k; });
+    if (!ci) { toast('خطا', 'er'); return; }
+    var p = prods.find(function(pr) { return pr.id === ci.id; });
+    if (!p) return;
+    var newOpts = {};
+    if (p.o && p.o.length) {
+      var aO = opts.filter(function(o) { return o.a && p.o.indexOf(o.id) !== -1; });
+      aO.forEach(function(o) {
+        var c = document.querySelector('input[name="edit-' + p.id + '-' + o.id + '"]:checked');
+        if (c) newOpts[o.n] = c.value;
+      });
+    }
+    var newK = getCartKey(p.id, newOpts);
+    if (newK === k) {
+      toast('بروز شد', 'ok');
+      sv('kl_r', cart);
+      updateBadge();
+      renderCart();
+      document.getElementById('editPanel').innerHTML = '';
+      return;
+    }
+    var exist = cart.find(function(c) { return c.k === newK; });
+    if (exist) {
+      exist.q += ci.q;
+      cart = cart.filter(function(c) { return c.k !== k; });
+    } else {
+      cart = cart.filter(function(c) { return c.k !== k; });
+      cart.push({ k: newK, id: p.id, q: ci.q, o: newOpts });
+    }
+    sv('kl_r', cart);
+    updateBadge();
+    renderCart();
+    document.getElementById('editPanel').innerHTML = '';
+    toast('ویرایش شد', 'ok');
+  } catch(e) {
+    console.warn('خطا در saveEdit:', e);
+  }
+}
+
+// ============================================================
+// فاکتور
+// ============================================================
+function genInvoice() {
+  try {
+    var nm = document.getElementById('cName').value.trim();
+    var ph = document.getElementById('cPhone').value.trim();
+    var city = document.getElementById('cCity').value.trim() || 'نامشخص';
+    if (!nm || !ph) { toast('نام و شماره الزامی است', 'er'); return; }
+    if (!cart.length) { toast('سبد خالی است', 'er'); return; }
+    document.fonts.ready.then(function() { drawInvoice(nm, ph, city); });
+  } catch(e) {
+    console.warn('خطا در genInvoice:', e);
+  }
+}
+
+function drawInvoice(cNm, cPh, cCity) {
+  try {
+    var W = 800,
+      pd = 36,
+      rH = 52,
+      hH = 44,
+      total = 0;
+    var rows = cart.map(function(ci) {
+      var p = prods.find(function(pr) { return pr.id === ci.id; });
+      if (!p) return null;
+      var t = p.l * ci.q;
+      total += t;
+      return { p: p, q: ci.q, t: t, o: ci.o };
+    }).filter(Boolean);
+    var tH = 200 + hH + rows.length * rH + 60 + 80 + 70 + pd;
+    var c = document.createElement('canvas');
+    c.width = W;
+    c.height = tH;
+    var x = c.getContext('2d');
+    x.fillStyle = '#FEFCFA';
+    x.fillRect(0, 0, W, tH);
+    var gr = x.createLinearGradient(0, 0, W, 0);
+    gr.addColorStop(0, '#3E2723');
+    gr.addColorStop(1, '#5D4037');
+    x.fillStyle = gr;
+    rr(x, 0, 0, W, 85);
+    x.fill();
+    x.fillStyle = '#FFF';
+    x.font = 'bold 26px Vazirmatn';
+    x.textAlign = 'center';
+    x.direction = 'rtl';
+    x.fillText('پیش فاکتور خرید از کافی‌لند - اصفهان', W / 2, 48);
+    x.font = '15px Vazirmatn';
+    x.fillStyle = 'rgba(255,255,255,0.85)';
+    x.fillText('مشتری: ' + cNm + ' | شهر: ' + cCity + ' | موبایل: ' + cPh, W / 2, 80);
+    var iN = parseInt(localStorage.getItem('kl_i') || '1000') + 1;
+    localStorage.setItem('kl_i', String(iN));
+    var ds = new Date().toLocaleDateString('fa-IR'),
+      ts = new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
+    x.fillStyle = '#8D6E63';
+    x.font = '12px Vazirmatn';
+    x.textAlign = 'right';
+    x.fillText('تاریخ: ' + ds + '  |  ساعت: ' + ts + '  |  شماره: #' + iN, W - pd, 110);
+    x.strokeStyle = '#E8DDD3';
+    x.lineWidth = 1;
+    x.beginPath();
+    x.moveTo(pd, 120);
+    x.lineTo(W - pd, 120);
+    x.stroke();
+    var y = 128;
+    x.fillStyle = '#5D4037';
+    rr(x, pd, y, W - pd * 2, hH, 6);
+    x.fill();
+    x.fillStyle = '#fff';
+    x.font = 'bold 12px Vazirmatn';
+    x.textAlign = 'center';
+    var cx = [W - pd - 30, W - pd - 130, W - pd - 220, W - pd - 300, W - pd - 390, W - pd - 540];
+    x.fillText('ردیف', cx[0], y + 26);
+    x.fillText('عکس', cx[1], y + 26);
+    x.fillText('عنوان کالا', cx[2], y + 26);
+    x.fillText('واحد', cx[3], y + 26);
+    x.fillText('تعداد', cx[4], y + 26);
+    x.fillText('قیمت واحد', cx[5] - 40, y + 26);
+    x.fillText('جمع کل', W - pd - 20, y + 26);
+    y += hH;
+    rows.forEach(function(r, i) {
+      if (i % 2 === 0) {
+        x.fillStyle = '#F8F5F2';
+        x.fillRect(pd, y, W - pd * 2, rH);
+      }
+      x.strokeStyle = '#F0EBE5';
+      x.lineWidth = 0.5;
+      x.beginPath();
+      x.moveTo(pd, y + rH);
+      x.lineTo(W - pd, y + rH);
+      x.stroke();
+      x.fillStyle = '#2C1810';
+      x.font = '12px Vazirmatn';
+      x.textAlign = 'center';
+      x.fillText(String(i + 1), cx[0], y + 28);
+      // عکس بند انگشتی
+      var imgX = cx[1] - 20;
+      var imgY = y + 4;
+      var imgSize = 36;
+      if (r.p.img) {
+        try {
+          var img = new Image();
+          img.crossOrigin = 'Anonymous';
+          img.src = r.p.img;
+          if (img.complete && img.naturalWidth > 0) {
+            x.save();
+            x.beginPath();
+            x.arc(imgX + imgSize / 2, imgY + imgSize / 2, imgSize / 2, 0, Math.PI * 2);
+            x.closePath();
+            x.clip();
+            x.drawImage(img, imgX, imgY, imgSize, imgSize);
+            x.restore();
+          } else {
+            x.font = '20px Vazirmatn';
+            x.textAlign = 'center';
+            x.fillStyle = '#D5CFC8';
+            x.fillText('📦', imgX + imgSize / 2, imgY + imgSize - 4);
+          }
+        } catch (e) {
+          x.font = '20px Vazirmatn';
+          x.textAlign = 'center';
+          x.fillStyle = '#D5CFC8';
+          x.fillText('📦', imgX + imgSize / 2, imgY + imgSize - 4);
+        }
+      } else {
+        x.font = '20px Vazirmatn';
+        x.textAlign = 'center';
+        x.fillStyle = '#D5CFC8';
+        x.fillText('📦', imgX + imgSize / 2, imgY + imgSize - 4);
+      }
+      x.textAlign = 'right';
+      var nm = r.p.n;
+      if (r.o) {
+        Object.keys(r.o).forEach(function(k) { nm += ' (' + r.o[k] + ')'; });
+      }
+      while (x.measureText(nm).width > 150 && nm.length > 0) nm = nm.slice(0, -1);
+      if (nm !== r.p.n) nm += '...';
+      x.fillStyle = '#2C1810';
+      x.font = '12px Vazirmatn';
+      x.fillText(nm, W - pd - 125, y + 28);
+      x.textAlign = 'center';
+      x.fillStyle = '#2C1810';
+      x.font = '12px Vazirmatn';
+      x.fillText(r.p.u, cx[3], y + 28);
+      x.fillText(String(r.q), cx[4], y + 28);
+      x.fillStyle = '#5D4037';
+      x.font = 'bold 12px Vazirmatn';
+      x.fillText(fp(r.p.l), cx[5] - 40, y + 28);
+      x.fillText(fp(r.t), W - pd - 20, y + 28);
+      y += rH;
+    });
+    y += 8;
+    x.fillStyle = '#F5E6D3';
+    rr(x, pd, y, W - pd * 2, 46, 6);
+    x.fill();
+    x.fillStyle = '#3E2723';
+    x.font = 'bold 16px Vazirmatn';
+    x.textAlign = 'right';
+    x.fillText('جمع کل فاکتور:', W - pd - 180, y + 28);
+    x.textAlign = 'left';
+    x.fillText(fp(total) + ' تومان', pd + 16, y + 28);
+    y += 60;
+    x.strokeStyle = '#E8DDD3';
+    x.lineWidth = 1;
+    x.beginPath();
+    x.moveTo(pd, y);
+    x.lineTo(W - pd, y);
+    x.stroke();
+    y += 18;
+    x.fillStyle = '#8D6E63';
+    x.font = '13px Vazirmatn';
+    x.textAlign = 'right';
+    x.fillText('مشتری: ' + cNm + ' | شهر: ' + cCity + ' | تماس: ' + cPh, W - pd, y);
+    y += 30;
+    x.fillStyle = '#C8956C';
+    x.font = '14px Vazirmatn';
+    x.textAlign = 'center';
+    x.fillText('☕ از خرید شما سپاسگزاریم ☕', W / 2, y);
+    x.strokeStyle = '#E8DDD3';
+    x.lineWidth = 1.5;
+    x.strokeRect(1, 1, W - 2, tH - 2);
+    invCvs = c;
+    var imgD = c.toDataURL('image/jpeg', 0.95);
+    document.getElementById('invW').innerHTML =
+      '<button class="bk" onclick="goPage(\'c\',document.querySelectorAll(\'.nv\')[2])"><span class="iconify" data-icon="mdi:arrow-right" style="font-size:14px"></span> بازگشت</button>' +
+      '<img src="' + imgD + '" alt="فاکتور">' +
+      '<div class="ia"><button class="bk" style="background:#25D366;color:#fff;margin-bottom:0" onclick="shareInv()"><span class="iconify" data-icon="mdi:share-variant" style="font-size:14px"></span>ارسال</button>' +
+      '<button class="bk" style="background:var(--m);color:#fff" onclick="saveInv()"><span class="iconify" data-icon="mdi:download" style="font-size:14px"></span>ذخیره عکس</button></div>';
+    goPage('i', null);
+  } catch(e) {
+    console.warn('خطا در drawInvoice:', e);
+  }
+}
+
+function rr(c, x, y, w, h, r) {
+  r = Math.min(r, w / 2, h / 2);
+  c.beginPath();
+  c.moveTo(x + r, y);
+  c.lineTo(x + w - r, y);
+  c.quadraticCurveTo(x + w, y, x + w, y + r);
+  c.lineTo(x + w, y + h - r);
+  c.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  c.lineTo(x + r, y + h);
+  c.quadraticCurveTo(x, y + h, x, y + h - r);
+  c.lineTo(x, y + r);
+  c.quadraticCurveTo(x, y, x + r, y);
+  c.closePath();
+}
+
+function shareInv() {
+  if (!invCvs) return;
+  invCvs.toBlob(function(b) {
+    var f = new File([b], 'invoice.jpg', { type: 'image/jpeg' });
+    if (navigator.canShare && navigator.canShare({ files: [f] })) {
+      navigator.share({ files: [f], title: 'پیش فاکتور - ' + sN }).catch(function(e) {
+        if (e.name !== 'AbortError') saveInv();
+      });
+    } else saveInv();
+  }, 'image/jpeg', 0.95);
+}
+
+function saveInv() {
+  if (!invCvs) return;
+  var a = document.createElement('a');
+  a.download = 'pishfactor.jpg';
+  a.href = invCvs.toDataURL('image/jpeg', 0.95);
+  a.click();
+  toast('ذخیره شد', 'ok');
+}
+
+// ============================================================
+// جستجوی عکس با Unsplash
+// ============================================================
+function searchImage() {
+  try {
+    var query = document.getElementById('pNm').value.trim();
+    var status = document.getElementById('pSearchStatus');
+    var preview = document.getElementById('pPreviewImg');
+    var urlField = document.getElementById('pUrl');
+    if (!query) {
+      status.textContent = '❌ ابتدا نام محصول را وارد کنید';
+      status.style.color = 'var(--no)';
+      return;
+    }
+    status.textContent = '⏳ در حال جستجوی عکس برای "' + query + '" ...';
+    status.style.color = 'var(--g)';
+    preview.style.display = 'none';
+    var finalUrl = 'https://source.unsplash.com/featured/?coffee,espresso,' + encodeURIComponent(query) + '&' + Date.now();
+    preview.src = finalUrl;
+    preview.style.display = 'block';
+    preview.onload = function() {
+      status.textContent = '✅ عکس پیدا شد (از Unsplash)';
+      status.style.color = 'var(--ok)';
+      urlField.value = finalUrl;
+    };
+    preview.onerror = function() {
+      preview.style.display = 'none';
+      status.textContent = '⚠️ عکسی یافت نشد، لینک دستی وارد کنید';
+      status.style.color = 'var(--no)';
+      var catId = parseInt(document.getElementById('pCat').value);
+      var cat = cats.find(function(c) { return c.id === catId; });
+      var defaultImages = {
+        'قهوه': 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=200&h=200&fit=crop',
+        'تجهیزات': 'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=200&h=200&fit=crop',
+        'مواد اولیه': 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&h=200&fit=crop'
+      };
+      var defaultUrl = defaultImages[cat ? cat.n : ''] || 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=200&h=200&fit=crop';
+      urlField.value = defaultUrl;
+      preview.src = defaultUrl;
+      preview.style.display = 'block';
+    };
+  } catch(e) {
+    console.warn('خطا در searchImage:', e);
+  }
+}
+
+// ============================================================
+// خروجی/ورودی Excel
+// ============================================================
+function exportExcel() {
+  try {
+    var data = [];
+    var header = ['شناسه', 'لینک عکس', 'نام محصول', 'دسته‌بندی', 'واحد', 'قیمت (تومان)'];
+    data.push(header);
+    prods.forEach(function(p) {
+      var row = [];
+      row.push(p.id);
+      row.push(p.img || '');
+      row.push(p.n);
+      var cat = cats.find(function(c) { return c.id === p.c; });
+      row.push(cat ? cat.n : '');
+      row.push(p.u);
+      row.push(p.l);
+      data.push(row);
+    });
+    var wb = XLSX.utils.book_new();
+    var ws = XLSX.utils.aoa_to_sheet(data);
+    ws['!cols'] = header.map(function() { return { wch: 25 }; });
+    var range = XLSX.utils.decode_range(ws['!ref']);
+    for (var R = range.s.r; R <= range.e.r; R++) {
+      for (var C = range.s.c; C <= range.e.c; C++) {
+        var addr = XLSX.utils.encode_cell({ r: R, c: C });
+        if (!ws[addr]) ws[addr] = { v: '' };
+        if (!ws[addr].s) ws[addr].s = {};
+        ws[addr].s.locked = true;
+        if (C === 5 && R > 0) {
+          ws[addr].s.locked = false;
+        }
+      }
+    }
+    ws['!protect'] = {
+      selectLockedCells: true,
+      selectUnlockedCells: true,
+      formatCells: false,
+      formatColumns: false,
+      formatRows: false,
+      insertColumns: false,
+      insertRows: false,
+      insertHyperlinks: false,
+      deleteColumns: false,
+      deleteRows: false,
+      sort: false,
+      autoFilter: false,
+      pivotTables: false
+    };
+    XLSX.utils.book_append_sheet(wb, ws, 'Products');
+    var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    var blob = new Blob([wbout], { type: 'application/octet-stream' });
+    var link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'products_prices.xlsx';
+    link.click();
+    toast('فایل اکسل با موفقیت تولید شد', 'ok');
+  } catch(e) {
+    toast('خطا در تولید فایل: ' + e.message, 'er');
+    console.warn('خطا در exportExcel:', e);
+  }
+}
+
+function importExcel(event) {
+  try {
+    var file = event.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        var data = new Uint8Array(e.target.result);
+        var workbook = XLSX.read(data, { type: 'array' });
+        var firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+        var jsonData = XLSX.utils.sheet_to_json(firstSheet);
+        if (!jsonData || jsonData.length === 0) {
+          toast('فایل خالی است یا فرمت صحیح ندارد', 'er');
+          return;
+        }
+        var keys = Object.keys(jsonData[0]);
+        if (!keys.includes('قیمت (تومان)')) {
+          toast('ستون "قیمت (تومان)" در فایل یافت نشد', 'er');
+          return;
+        }
+        var updated = 0;
+        jsonData.forEach(function(row) {
+          var name = row['نام محصول'];
+          var price = row['قیمت (تومان)'];
+          if (!name) return;
+          var numPrice = parseFloat(String(price).replace(/[^0-9.]/g, ''));
+          if (isNaN(numPrice) || numPrice < 0) return;
+          var p = prods.find(function(pr) {
+            return pr.n === name || pr.n.indexOf(name) !== -1 || name.indexOf(pr.n) !== -1;
+          });
+          if (p) {
+            p.l = Math.round(numPrice);
+            updated++;
+          }
+        });
+        if (updated > 0) {
+          sv('kl_p', prods);
+          renderProdsAdm();
+          renderSections();
+          renderProducts();
+          updateBadge();
+          toast(updated + ' محصول با موفقیت به‌روز شد', 'ok');
+        } else {
+          toast('هیچ محصولی به‌روز نشد. لطفاً نام‌ها را بررسی کنید.', 'er');
+        }
+      } catch(err) {
+        toast('خطا در خواندن فایل: ' + err.message, 'er');
+        console.warn('خطا در importExcel (onload):', err);
+      }
+      event.target.value = '';
+    };
+    reader.readAsArrayBuffer(file);
+  } catch(e) {
+    toast('خطا در importExcel: ' + e.message, 'er');
+    console.warn('خطا در importExcel:', e);
+  }
+}
+
+// ============================================================
+// پنل مدیریت
+// ============================================================
+function openAdm() {
+  try {
+    if (!admIn) { checkPwPrompt(); return; }
+    document.getElementById('mainSite').style.display = 'none';
+    document.getElementById('admPg').classList.add('sh');
+    loadAdmData();
+  } catch(e) {
+    console.warn('خطا در openAdm:', e);
+  }
+}
+
+function closeAdm() {
+  try {
+    document.getElementById('admPg').classList.remove('sh');
+    document.getElementById('mainSite').style.display = 'block';
+  } catch(e) {
+    console.warn('خطا در closeAdm:', e);
+  }
+}
+
+function checkPwPrompt() {
+  try {
+    var p = prompt('رمز عبور را وارد کنید:');
+    if (p === null) return;
+    if (p === aPw) {
+      admIn = true;
+      document.getElementById('mainSite').style.display = 'none';
+      document.getElementById('admPg').classList.add('sh');
+      loadAdmData();
+    } else {
+      toast('رمز اشتباه است', 'er');
+    }
+  } catch(e) {
+    console.warn('خطا در checkPwPrompt:', e);
+  }
+}
+
+function loadAdmData() {
+  try {
+    document.getElementById('sN').value = sN;
+    document.getElementById('sA').value = sA;
+    document.getElementById('sPh').value = sPh;
+    renderSocAdm();
+    renderCatsAdm();
+    renderProdsAdm();
+    renderOptsAdm();
+  } catch(e) {
+    console.warn('خطا در loadAdmData:', e);
+  }
+}
+
+function aTab(t, el) {
+  try {
+    document.querySelectorAll('.abn').forEach(function(x) { x.classList.remove('on'); });
+    el.classList.add('on');
+    document.querySelectorAll('.apl').forEach(function(x) { x.classList.remove('on'); });
+    var map = { st: 'xst', ct: 'xct', pr: 'xpr', op: 'xop', im: 'xim' };
+    document.getElementById(map[t]).classList.add('on');
+  } catch(e) {
+    console.warn('خطا در aTab:', e);
+  }
+}
+
+// ============================================================
+// مدیریت دسته‌بندی
+// ============================================================
+function catOptsHtml(selId) {
+  try {
+    var h = '<option value="0">— ریشه —</option>';
+    (function addL(pid, lv) {
+      cats.filter(function(c) { return c.p === pid; }).forEach(function(c) {
+        var ind = '';
+        for (var i = 0; i < lv; i++) ind += '── ';
+        h += '<option value="' + c.id + '"' + (c.id === selId ? ' selected' : '') + '>' + ind + c.n + '</option>';
+        addL(c.id, lv + 1);
+      });
+    })(0, 0);
+    return h;
+  } catch(e) {
+    console.warn('خطا در catOptsHtml:', e);
+    return '<option value="0">— ریشه —</option>';
+  }
+}
+
+function addCat() {
+  try {
+    var nm = document.getElementById('cNm').value.trim();
+    var pid = parseInt(document.getElementById('cPar').value);
+    if (!nm) { toast('نام الزامی است', 'er'); return; }
+    var id = cats.length ? Math.max.apply(null, cats.map(function(c) { return c.id; })) + 1 : 1;
+    cats.push({ id: id, n: nm, p: pid });
+    sv('kl_c', cats);
+    document.getElementById('cNm').value = '';
+    renderCatsAdm();
+    renderHomeMenu();
+    toast('اضافه شد', 'ok');
+  } catch(e) {
+    console.warn('خطا در addCat:', e);
+  }
+}
+
+function delCat(id) {
+  try {
+    if (cats.some(function(c) { return c.p === id; })) {
+      toast('ابتدا زیرمجموعه‌ها را حذف کنید', 'er');
+      return;
+    }
+    if (prods.some(function(p) { return p.c === id; })) {
+      toast('ابتدا محصولات این دسته را حذف کنید', 'er');
+      return;
+    }
+    cats = cats.filter(function(c) { return c.id !== id; });
+    if (selCat === id) selCat = 1;
+    sv('kl_c', cats);
+    renderCatsAdm();
+    renderHomeMenu();
+    toast('حذف شد');
+  } catch(e) {
+    console.warn('خطا در delCat:', e);
+  }
+}
+
+function renderCatsAdm() {
+  try {
+    document.getElementById('cPar').innerHTML = catOptsHtml(0);
+    document.getElementById('cList').innerHTML = (function b(pid, lv) {
+      var h = '';
+      cats.filter(function(c) { return c.p === pid; }).forEach(function(c) {
+        var ind = '';
+        for (var i = 0; i < lv; i++) ind += '　';
+        var k = cats.some(function(x) { return x.p === c.id; });
+        h += '<div class="di"><span style="color:' + (k ? 'var(--m)' : 'var(--a)') + '">' + (k ? '📂' : '📁') + '</span><div class="nf"><h4>' + ind + c.n + '</h4></div><button class="dl" onclick="delCat(' + c.id + ')">✕</button></div>';
+        h += b(c.id, lv + 1);
+      });
+      return h;
+    })(0, 0);
+  } catch(e) {
+    console.warn('خطا در renderCatsAdm:', e);
+  }
+}
+
+// ============================================================
+// مدیریت ویژگی‌ها
+// ============================================================
+function addOpt() {
+  try {
+    var nm = document.getElementById('oNm').value.trim();
+    var vs = document.getElementById('oVals').value.trim();
+    var ac = document.getElementById('oAct').checked;
+    if (!nm) { toast('نام الزامی است', 'er'); return; }
+    var va = vs ? vs.split(',').map(function(v) { return v.trim(); }).filter(function(v) { return v; }) : [];
+    if (!va.length) { toast('حداقل یک مقدار وارد کنید', 'er'); return; }
+    var id = opts.length ? Math.max.apply(null, opts.map(function(o) { return o.id; })) + 1 : 1;
+    opts.push({ id: id, n: nm, a: ac, v: va });
+    sv('kl_o', opts);
+    document.getElementById('oNm').value = '';
+    document.getElementById('oVals').value = '';
+    renderOptsAdm();
+    renderProdsAdm();
+    toast('اضافه شد', 'ok');
+  } catch(e) {
+    console.warn('خطا در addOpt:', e);
+  }
+}
+
+function delOpt(id) {
+  try {
+    opts = opts.filter(function(o) { return o.id !== id; });
+    prods.forEach(function(p) {
+      if (p.o) p.o = p.o.filter(function(oid) { return oid !== id; });
+    });
+    sv('kl_o', opts);
+    sv('kl_p', prods);
+    renderOptsAdm();
+    renderProdsAdm();
+    toast('حذف شد');
+  } catch(e) {
+    console.warn('خطا در delOpt:', e);
+  }
+}
+
+function togOptAct(id) {
+  try {
+    var o = opts.find(function(x) { return x.id === id; });
+    if (o) {
+      o.a = !o.a;
+      sv('kl_o', opts);
+      renderOptsAdm();
+    }
+  } catch(e) {
+    console.warn('خطا در togOptAct:', e);
+  }
+}
+
+function addOptVal(id) {
+  try {
+    var inp = document.getElementById('ov-' + id);
+    if (!inp) return;
+    var v = inp.value.trim();
+    if (!v) return;
+    var o = opts.find(function(x) { return x.id === id; });
+    if (o) {
+      o.v.push(v);
+      sv('kl_o', opts);
+      renderOptsAdm();
+      inp.value = '';
+    }
+  } catch(e) {
+    console.warn('خطا در addOptVal:', e);
+  }
+}
+
+function delOptVal(oid, vi) {
+  try {
+    var o = opts.find(function(x) { return x.id === oid; });
+    if (o) {
+      o.v.splice(vi, 1);
+      sv('kl_o', opts);
+      renderOptsAdm();
+    }
+  } catch(e) {
+    console.warn('خطا در delOptVal:', e);
+  }
+}
+
+function renderOptsAdm() {
+  try {
+    var h = '';
+    opts.forEach(function(o) {
+      h += '<div class="oti"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><h4>🏷️ ' + o.n + '</h4><div style="display:flex;align-items:center;gap:6px"><label class="sw"><input type="checkbox"' + (o.a ? ' checked' : '') + ' onchange="togOptAct(' + o.id + ')"><span class="sl"></span></label><button class="dl" onclick="delOpt(' + o.id + ')">✕</button></div></div><div class="otg">';
+      o.v.forEach(function(v, i) {
+        h += '<span class="otag">' + v + ' <span class="x" onclick="delOptVal(' + o.id + ',' + i + ')">✕</span></span>';
+      });
+      h += '</div><div class="oar"><input id="ov-' + o.id + '" placeholder="مقدار جدید..."><button onclick="addOptVal(' + o.id + ')">+</button></div></div>';
+    });
+    document.getElementById('oList').innerHTML = h || '<p style="text-align:center;color:var(--g);padding:14px">ویژگی نیست</p>';
+  } catch(e) {
+    console.warn('خطا در renderOptsAdm:', e);
+  }
+}
+
+// ============================================================
+// مدیریت محصولات
+// ============================================================
+function addProd() {
+  try {
+    var nm = document.getElementById('pNm').value.trim();
+    var ci = parseInt(document.getElementById('pCat').value);
+    var dc = document.getElementById('pDesc').value.trim();
+    var u = document.getElementById('pUnit').value;
+    var b = parseInt(document.getElementById('pBuy').value) || 0;
+    var l = parseInt(document.getElementById('pSell').value);
+    var url = document.getElementById('pUrl').value.trim();
+    var isOf = document.getElementById('pIsOf').checked;
+    var isSg = document.getElementById('pIsSg').checked;
+    if (!nm || !l) { toast('نام و قیمت فروش الزامی است', 'er'); return; }
+    var oids = [];
+    document.querySelectorAll('#pOptsContainer input[type="checkbox"]:checked').forEach(function(cb) {
+      oids.push(parseInt(cb.value));
+    });
+    var id = prods.length ? Math.max.apply(null, prods.map(function(p) { return p.id; })) + 1 : 1;
+    prods.push({ id: id, n: nm, c: ci, u: u, b: b, l: l, img: url, dc: dc, o: oids, isOf: isOf, isSg: isSg });
+    sv('kl_p', prods);
+    ['pNm', 'pDesc', 'pBuy', 'pSell', 'pUrl'].forEach(function(x) { document.getElementById(x).value = ''; });
+    document.getElementById('pIsOf').checked = false;
+    document.getElementById('pIsSg').checked = false;
+    renderProdsAdm();
+    renderSections();
+    renderProducts();
+    toast('اضافه شد', 'ok');
+  } catch(e) {
+    console.warn('خطا در addProd:', e);
+  }
+}
+
+function delProd(id) {
+  try {
+    prods = prods.filter(function(p) { return p.id !== id; });
+    cart = cart.filter(function(c) { return c.id !== id; });
+    sv('kl_p', prods);
+    sv('kl_r', cart);
+    updateBadge();
+    renderProdsAdm();
+    renderSections();
+    renderProducts();
+    toast('حذف شد');
+  } catch(e) {
+    console.warn('خطا در delProd:', e);
+  }
+}
+
+function renderProdsAdm() {
+  try {
+    document.getElementById('pCat').innerHTML = catOptsHtml(0);
+    var container = document.getElementById('pOptsContainer');
+    var h = '<div class="ocr">';
+    opts.forEach(function(o) {
+      h += '<div><label class="och"><input type="checkbox" value="' + o.id + '" onchange="updateOptValues(this)"><span>' + o.n + '</span></label>';
+      h += '<div class="opt-values" id="opt-vals-' + o.id + '" style="display:none;margin-right:20px;margin-top:4px;font-size:11px;color:var(--g)">';
+      o.v.forEach(function(v) {
+        h += '<label style="display:inline-block;margin-left:8px"><input type="radio" name="opt-' + o.id + '" value="' + v + '" disabled> ' + v + '</label>';
+      });
+      h += '</div></div>';
+    });
+    h += '</div>';
+    container.innerHTML = h;
+    document.getElementById('pList').innerHTML = prods.map(function(p) {
+      return '<div class="di"><div class="nf"><h4>' + p.n + (p.dc ? ' - ' + p.dc : '') + '</h4><p>' + fp(p.l) + ' تومان / ' + p.u + (p.b ? ' | خرید: ' + fp(p.b) : '') + (p.isOf ? ' | 🔥شگفت‌انگیز' : '') + (p.isSg ? ' | ⭐پیشنهاد' : '') + '</p></div><button class="dl" onclick="delProd(' + p.id + ')">✕</button></div>';
+    }).join('') || '<p style="text-align:center;color:var(--g);padding:14px">محصولی نیست</p>';
+  } catch(e) {
+    console.warn('خطا در renderProdsAdm:', e);
+  }
+}
+
+function updateOptValues(cb) {
+  try {
+    var id = cb.value;
+    var container = document.getElementById('opt-vals-' + id);
+    if (!container) return;
+    if (cb.checked) {
+      container.style.display = 'block';
+      container.querySelectorAll('input').forEach(function(inp) { inp.disabled = false; });
+    } else {
+      container.style.display = 'none';
+      container.querySelectorAll('input').forEach(function(inp) { inp.disabled = true; inp.checked = false; });
+    }
+  } catch(e) {
+    console.warn('خطا در updateOptValues:', e);
+  }
+}
+
+// ============================================================
+// ایمپورت قیمت از متن
+// ============================================================
+function importPrices() {
+  try {
+    var raw = document.getElementById('impData').value.trim();
+    if (!raw) { toast('داده‌ای وارد نشده', 'er'); return; }
+    var f = 0;
+    raw.split('\n').forEach(function(line) {
+      var pts = line.split('\t');
+      if (pts.length < 2) pts = line.split(',');
+      if (pts.length < 2) return;
+      var nm = pts[0].trim();
+      var l = parseInt(pts[1].replace(/[^0-9]/g, ''));
+      var b = pts.length >= 3 ? parseInt(pts[2].replace(/[^0-9]/g, '')) : null;
+      if (!nm || !l) return;
+      var p = prods.find(function(x) {
+        return x.n === nm || x.n.indexOf(nm) !== -1 || nm.indexOf(x.n) !== -1;
+      });
+      if (p) {
+        p.l = l;
+        if (b && b > 0) p.b = b;
+        f++;
+      }
+    });
+    sv('kl_p', prods);
+    renderProdsAdm();
+    renderSections();
+    renderProducts();
+    toast(f + ' قیمت بروز شد', 'ok');
+    document.getElementById('impData').value = '';
+  } catch(e) {
+    console.warn('خطا در importPrices:', e);
+  }
+}
+
+// ============================================================
+// توابع مدیریت صفحات
+// ============================================================
+function goPage(n, el) {
+  try {
+    document.querySelectorAll('.pg').forEach(function(p) { p.classList.remove('on'); });
+    if (n === 'h') {
+      document.getElementById('pgH').classList.add('on');
+      currentMode = 'home';
+      renderHomeMenu();
+      renderHomeProducts();
+      renderSections();
+    } else if (n === 'd') {
+      document.getElementById('pgD').classList.add('on');
+      currentMode = 'category';
+      renderCategoryTree(0);
+    } else if (n === 's') {
+      document.getElementById('pgS').classList.add('on');
+    } else if (n === 'c') {
+      document.getElementById('pgC').classList.add('on');
+      renderCart();
+    } else if (n === 'i') {
+      document.getElementById('pgI').classList.add('on');
+    } else if (n === 'p') {
+      document.getElementById('pgP').classList.add('on');
+    } else if (n === 'pd') {
+      document.getElementById('pgPD').classList.add('on');
+    } else if (n === 'contact') {
+      document.getElementById('pgContact').classList.add('on');
+    }
+    if (el) {
+      document.querySelectorAll('.nv').forEach(function(x) { x.classList.remove('on'); });
+      if (el.tagName === 'BUTTON') el.classList.add('on');
+    }
+    window.scrollTo(0, 0);
+  } catch(e) {
+    console.warn('خطا در goPage:', e);
+  }
+}
+
+function goHome() {
+  try {
+    selCat = 1;
+    selSubCat = 0;
+    hideSpecials = false;
+    document.querySelectorAll('.nv').forEach(function(x) { x.classList.remove('on'); });
+    document.querySelectorAll('.nv')[0].classList.add('on');
+    goPage('h', null);
+    renderHomeMenu();
+    renderHomeProducts();
+    updateSpecialsVisibility();
+    document.getElementById('hamburgerMenu').classList.remove('open');
+  } catch(e) {
+    console.warn('خطا در goHome:', e);
+  }
+}
+
+// ============================================================
+// مقداردهی اولیه
+// ============================================================
+function init() {
+  try {
+    renderSoc();
+    // تنظیم اولیه: قهوه انتخاب شده، بخش‌های ویژه نمایش داده شوند
+    selCat = 1;
+    hideSpecials = false;
+    renderHomeMenu();
+    renderHomeProducts();
+    renderSections();
+    updateBadge();
+  } catch(e) {
+    console.warn('خطا در init:', e);
+  }
+}
+
+// ============================================================
+// رندر پیام‌رسان‌ها
+// ============================================================
+function renderSoc() {
+  try {
+    document.getElementById('socRow').innerHTML = socs.map(function(s) {
+      return '<button class="soc-b' + (s.a ? '' : ' off') + '" onclick="goSoc(\'' + s.id + '\')"><span class="iconify" data-icon="' + s.ic + '" style="font-size:14px"></span></button>';
+    }).join('');
+  } catch(e) {
+    console.warn('خطا در renderSoc:', e);
+  }
+}
+
+function goSoc(id) {
+  try {
+    var s = socs.find(function(x) { return x.id === id; });
+    if (s && s.lk) window.open(s.lk, '_blank');
+  } catch(e) {
+    console.warn('خطا در goSoc:', e);
+  }
+}
+
+function renderSocAdm() {
+  try {
+    document.getElementById('socAdmList').innerHTML = socs.map(function(s) {
+      return '<div class="soc-a"><div class="nf"><h4>' + s.n + '</h4><input type="text" value="' + s.lk + '" placeholder="لینک" onchange="updSoc(\'' + s.id + '\',this.value)"></div><div style="display:flex;align-items:center;gap:6px"><label class="sw"><input type="checkbox"' + (s.a ? ' checked' : '') + ' onchange="togSoc(\'' + s.id + '\')"><span class="sl"></span></label><span style="font-size:11px;color:var(--g)">فعال</span></div></div>';
+    }).join('');
+  } catch(e) {
+    console.warn('خطا در renderSocAdm:', e);
+  }
+}
+
+function updSoc(id, lk) {
+  try {
+    var s = socs.find(function(x) { return x.id === id; });
+    if (s) { s.lk = lk;
+      sv('kl_s', socs); }
+  } catch(e) {
+    console.warn('خطا در updSoc:', e);
+  }
+}
+
+function togSoc(id) {
+  try {
+    var s = socs.find(function(x) { return x.id === id; });
+    if (s) { s.a = !s.a;
+      sv('kl_s', socs);
+      renderSocAdm();
+      renderSoc(); }
+  } catch(e) {
+    console.warn('خطا در togSoc:', e);
+  }
+}
+
+// ============================================================
+// شروع برنامه
+// ============================================================
+init();
+</script>
+</body>
+</html>
