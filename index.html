@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>قهوه‌خانه‌ی زمرد</title>
+    <link href="https://fonts.googleapis.com/css2?family=Yekan+Bakh&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Yekan Bakh', sans-serif;
+            background: #faf3eb;
+            color: #3e2c1b;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: #fffbf7;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(60, 40, 20, 0.08);
+            padding: 24px 28px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #efe4da;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            font-size: 28px;
+            color: #a67b5b;
+        }
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #4f3420;
+            letter-spacing: 1px;
+        }
+        .logo-text span {
+            color: #b28b6f;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #d6c0b0;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4f3420;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-outline:hover {
+            background: #efe4da;
+            border-color: #b28b6f;
+        }
+        .btn-primary {
+            background: #a67b5b;
+            border: none;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-primary:hover {
+            background: #8b6a4f;
+        }
+        .google-btn {
+            background: #fff;
+            border: 1px solid #d6c0b0;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4f3420;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .google-btn img {
+            width: 18px;
+            height: 18px;
+        }
+        .google-btn:hover {
+            background: #f7f0ea;
+        }
+        .search-bar {
+            margin: 20px 0 18px;
+            display: flex;
+            justify-content: center;
+        }
+        .search-bar input {
+            width: 100%;
+            max-width: 480px;
+            padding: 12px 22px;
+            border-radius: 60px;
+            border: 1px solid #e3d5c9;
+            background: #fcf8f4;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: 0.2s;
+            color: #3e2c1b;
+        }
+        .search-bar input:focus {
+            border-color: #a67b5b;
+            box-shadow: 0 0 0 3px rgba(166, 123, 91, 0.15);
+        }
+        .notice-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #a67b5b;
+            color: #fff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(166, 123, 91, 0.3);
+            transition: 0.25s;
+            z-index: 999;
+        }
+        .notice-toggle:hover {
+            transform: scale(1.05);
+            background: #8b6a4f;
+        }
+        .notice-box {
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            max-width: 320px;
+            background: #fffbf7;
+            border: 1px solid #e3d5c9;
+            border-radius: 20px;
+            padding: 20px 24px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            display: none;
+            z-index: 1000;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #3e2c1b;
+        }
+        .notice-box.show {
+            display: block;
+        }
+        .notice-box .close-notice {
+            float: left;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #b28b6f;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 28px 0 16px;
+            color: #4f3420;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title i {
+            color: #a67b5b;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+        .product-card {
+            background: #fcf8f4;
+            border-radius: 24px;
+            padding: 16px 14px 18px;
+            text-align: center;
+            transition: 0.25s;
+            border: 1px solid #efe4da;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(60, 40, 20, 0.06);
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 16px;
+            background: #e9ddd2;
+        }
+        .product-card h4 {
+            font-size: 16px;
+            margin: 12px 0 6px;
+            color: #3e2c1b;
+        }
+        .product-card .price {
+            font-size: 15px;
+            font-weight: 600;
+            color: #a67b5b;
+        }
+        .product-card .btn-add {
+            margin-top: 10px;
+            background: #a67b5b;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .product-card .btn-add:hover {
+            background: #8b6a4f;
+        }
+        .invoice-area {
+            margin: 30px 0 20px;
+            background: #fcf8f4;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid #efe4da;
+        }
+        .invoice-area h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #4f3420;
+        }
+        .invoice-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e3d5c9;
+            font-size: 15px;
+        }
+        .invoice-total {
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 12px;
+            color: #4f3420;
+        }
+        /* ADMIN DOT */
+        .admin-dot {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            width: 16px;
+            height: 16px;
+            background: #4a7b9c;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 999;
+            transition: 0.2s;
+            opacity: 0.6;
+        }
+        .admin-dot:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        /* ADMIN POPUP */
+        .admin-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        .admin-popup.show {
+            display: flex;
+        }
+        .admin-popup-inner {
+            background: #fffbf7;
+            padding: 36px 32px;
+            border-radius: 32px;
+            max-width: 360px;
+            width: 90%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .admin-popup-inner h3 {
+            margin-bottom: 16px;
+            color: #4f3420;
+        }
+        .admin-popup-inner input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 40px;
+            border: 1px solid #d6c0b0;
+            font-family: inherit;
+            font-size: 15px;
+            margin-bottom: 16px;
+            outline: none;
+        }
+        .admin-popup-inner input:focus {
+            border-color: #a67b5b;
+        }
+        .admin-popup-inner .btn-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        .admin-popup-inner .btn-row button {
+            padding: 8px 28px;
+            border-radius: 40px;
+            border: none;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-confirm {
+            background: #a67b5b;
+            color: #fff;
+        }
+        .btn-confirm:hover {
+            background: #8b6a4f;
+        }
+        .btn-cancel {
+            background: #efe4da;
+            color: #4f3420;
+        }
+        .btn-cancel:hover {
+            background: #e3d5c9;
+        }
+        .admin-error {
+            color: #b33;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+        }
+        /* COLLAB POPUP */
+        .collab-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(2px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1500;
+        }
+        .collab-popup.show {
+            display: flex;
+        }
+        .collab-popup-inner {
+            background: #fffbf7;
+            padding: 30px 28px;
+            border-radius: 28px;
+            max-width: 340px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        .collab-popup-inner h3 {
+            margin-bottom: 12px;
+            color: #4f3420;
+        }
+        .collab-popup-inner p {
+            font-size: 14px;
+            color: #6b5440;
+            margin-bottom: 16px;
+        }
+        .collab-popup-inner input {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 40px;
+            border: 1px solid #d6c0b0;
+            font-family: inherit;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
+        }
+        .collab-popup-inner .btn-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .footer {
+            margin-top: 32px;
+            text-align: center;
+            font-size: 13px;
+            color: #8f7a68;
+            border-top: 1px solid #efe4da;
+            padding-top: 20px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px;
+            }
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .header-left {
+                justify-content: center;
+            }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .notice-box {
+                right: 16px;
+                left: 16px;
+                max-width: none;
+            }
+        }
+        .user-greeting {
+            font-size: 14px;
+            color: #6b5440;
+            background: #efe4da;
+            padding: 4px 16px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .no-select {
+            user-select: none;
+        }
+        .bg-coffee-light {
+            background: #faf3eb;
+        }
+        .text-coffee {
+            color: #4f3420;
+        }
+        .border-coffee {
+            border-color: #d6c0b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <header class="header">
+            <div class="logo-area">
+                <i class="fas fa-mug-hot logo-icon"></i>
+                <div class="logo-text">قهوه‌خانه <span>زمرد</span></div>
+            </div>
+            <div class="header-left">
+                <button class="google-btn" id="googleLoginBtn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" />
+                    ورود با گوگل
+                </button>
+                <button class="btn-outline" id="customerBtn"><i class="fas fa-user"></i> مشتری</button>
+                <button class="btn-outline" id="partnerBtn"><i class="fas fa-handshake"></i> همکار</button>
+                <span class="user-greeting" id="userGreeting" style="display:none;"></span>
+            </div>
+        </header>
+
+        <div class="search-bar">
+            <input type="text" placeholder="جستجوی محصولات..." id="searchInput" />
+        </div>
+
+        <div class="section-title"><i class="fas fa-store"></i> محصولات ویژه</div>
+        <div class="product-grid" id="productGrid"></div>
+
+        <div class="invoice-area">
+            <h3><i class="fas fa-receipt"></i> فاکتور شما</h3>
+            <div id="invoiceItems"></div>
+            <div class="invoice-total" id="invoiceTotal">مجموع: ۰ تومان</div>
+            <button class="btn-primary" style="margin-top:12px;" id="clearInvoiceBtn"><i class="fas fa-trash-alt"></i> خالی کردن فاکتور</button>
+        </div>
+
+        <div class="footer">
+            <i class="fas fa-copyright"></i> ۱۴۰۵ - تمامی حقوق محفوظ است.
+        </div>
+    </div>
+
+    <button class="notice-toggle" id="noticeToggle"><i class="fas fa-bell"></i></button>
+    <div class="notice-box" id="noticeBox">
+        <button class="close-notice" id="closeNotice"><i class="fas fa-times"></i></button>
+        <p><strong>تذکر مهم</strong><br>متن تذکر در پنل مدیریت قابل ویرایش است.</p>
+    </div>
+
+    <div class="admin-dot" id="adminDot" title=""></div>
+
+    <div class="admin-popup" id="adminPopup">
+        <div class="admin-popup-inner">
+            <h3><i class="fas fa-lock"></i> ورود مدیر</h3>
+            <input type="password" id="adminPassword" placeholder="رمز مدیر..." />
+            <div class="btn-row">
+                <button class="btn-confirm" id="adminConfirm">تایید</button>
+                <button class="btn-cancel" id="adminCancel">انصراف</button>
+            </div>
+            <div class="admin-error" id="adminError">رمز اشتباه است!</div>
+        </div>
+    </div>
+
+    <div class="collab-popup" id="collabPopup">
+        <div class="collab-popup-inner">
+            <h3><i class="fas fa-user-friends"></i> ورود همکاران</h3>
+            <p>لطفاً رمز عبور همکاران را وارد کنید تا قیمت‌های ویژه را مشاهده کنید.</p>
+            <input type="password" id="collabPassword" placeholder="رمز همکاران..." />
+            <div class="btn-row">
+                <button class="btn-confirm" id="collabConfirm">تایید</button>
+                <button class="btn-cancel" id="collabCancel">انصراف</button>
+            </div>
+            <div class="admin-error" id="collabError" style="display:none;">رمز اشتباه است. لطفاً دوباره تلاش کنید.</div>
+        </div>
+    </div>
+
+    <script>
+        // =============================================================
+        // PRODUCT DATA
+        // =============================================================
+        const products = [{
+            id: 1,
+            name: 'دستبند قهوه‌ای',
+            price: 120000,
+            image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=300&fit=crop&crop=center'
+        }, {
+            id: 2,
+            name: 'گردنبند دان قهوه',
+            price: 185000,
+            image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop&crop=center'
+        }, {
+            id: 3,
+            name: 'انگشتر طلایی قهوه',
+            price: 250000,
+            image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=300&fit=crop&crop=center'
+        }, {
+            id: 4,
+            name: 'سنجاق سینه قهوه‌ای',
+            price: 95000,
+            image: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400&h=300&fit=crop&crop=center'
+        }];
+
+        // =============================================================
+        // RENDER PRODUCTS
+        // =============================================================
+        const grid = document.getElementById('productGrid');
+
+        function renderProducts() {
+            grid.innerHTML = '';
+            products.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${p.image}" alt="${p.name}" loading="lazy" />
+                    <h4>${p.name}</h4>
+                    <div class="price">${p.price.toLocaleString()} تومان</div>
+                    <button class="btn-add" data-id="${p.id}">افزودن به فاکتور</button>
+                `;
+                grid.appendChild(card);
+            });
+            document.querySelectorAll('.btn-add').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    addToInvoice(parseInt(this.dataset.id));
+                });
+            });
+        }
+        renderProducts();
+
+        // =============================================================
+        // INVOICE
+        // =============================================================
+        let invoice = [];
+
+        function addToInvoice(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            const existing = invoice.find(item => item.id === productId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                invoice.push({ ...product,
+                    qty: 1 });
+            }
+            updateInvoiceUI();
+        }
+
+        function updateInvoiceUI() {
+            const container = document.getElementById('invoiceItems');
+            const totalEl = document.getElementById('invoiceTotal');
+            if (invoice.length === 0) {
+                container.innerHTML = '<div style="color:#8f7a68; font-size:14px;">هیچ محصولی انتخاب نشده است.</div>';
+                totalEl.textContent = 'مجموع: ۰ تومان';
+                return;
+            }
+            let html = '';
+            let total = 0;
+            invoice.forEach(item => {
+                const sum = item.price * item.qty;
+                total += sum;
+                html += `
+                    <div class="invoice-item">
+                        <span>${item.name} (${item.qty}×)</span>
+                        <span>${sum.toLocaleString()} تومان</span>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            totalEl.textContent = `مجموع: ${total.toLocaleString()} تومان`;
+        }
+        document.getElementById('clearInvoiceBtn').addEventListener('click', function() {
+            invoice = [];
+            updateInvoiceUI();
+        });
+
+        // =============================================================
+        // NOTICE
+        // =============================================================
+        const noticeToggle = document.getElementById('noticeToggle');
+        const noticeBox = document.getElementById('noticeBox');
+        const closeNotice = document.getElementById('closeNotice');
+
+        function toggleNotice() {
+            noticeBox.classList.toggle('show');
+        }
+        noticeToggle.addEventListener('click', toggleNotice);
+        closeNotice.addEventListener('click', () => noticeBox.classList.remove('show'));
+        document.addEventListener('click', function(e) {
+            if (!noticeBox.contains(e.target) && e.target !== noticeToggle) {
+                noticeBox.classList.remove('show');
+            }
+        });
+
+        // =============================================================
+        // CUSTOMER (no password - always open)
+        // =============================================================
+        document.getElementById('customerBtn').addEventListener('click', function() {
+            alert('👤 شما به عنوان مشتری وارد شدید.');
+        });
+
+        // =============================================================
+        // COLLABORATOR (HASHED password: "1234")
+        // =============================================================
+        // SHA-256 hash of "1234" is:
+        // 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+        const COLLAB_HASH = '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
+
+        const partnerBtn = document.getElementById('partnerBtn');
+        const collabPopup = document.getElementById('collabPopup');
+        const collabPassword = document.getElementById('collabPassword');
+        const collabConfirm = document.getElementById('collabConfirm');
+        const collabCancel = document.getElementById('collabCancel');
+        const collabError = document.getElementById('collabError');
+
+        partnerBtn.addEventListener('click', function() {
+            collabPopup.classList.add('show');
+            collabPassword.value = '';
+            collabError.style.display = 'none';
+        });
+
+        async function verifyCollabPassword(pwd) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(pwd);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex === COLLAB_HASH;
+        }
+
+        collabConfirm.addEventListener('click', function() {
+            const entered = collabPassword.value;
+            if (!entered) {
+                collabError.style.display = 'block';
+                return;
+            }
+            verifyCollabPassword(entered).then(isValid => {
+                if (isValid) {
+                    collabPopup.classList.remove('show');
+                    alert('✅ ورود همکار با موفقیت انجام شد. قیمت‌های ویژه نمایش داده می‌شوند.');
+                    // Here you can add logic to show special prices
+                } else {
+                    collabError.style.display = 'block';
+                }
+            });
+        });
+
+        collabCancel.addEventListener('click', function() {
+            collabPopup.classList.remove('show');
+        });
+        collabPassword.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') collabConfirm.click();
+        });
+
+        // =============================================================
+        // ADMIN (HASHED password: "123456")
+        // =============================================================
+        const ADMIN_HASH = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+
+        const adminDot = document.getElementById('adminDot');
+        const adminPopup = document.getElementById('adminPopup');
+        const adminPassword = document.getElementById('adminPassword');
+        const adminConfirm = document.getElementById('adminConfirm');
+        const adminCancel = document.getElementById('adminCancel');
+        const adminError = document.getElementById('adminError');
+
+        adminDot.addEventListener('click', function() {
+            adminPopup.classList.add('show');
+            adminPassword.value = '';
+            adminError.style.display = 'none';
+        });
+
+        async function verifyAdminPassword(pwd) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(pwd);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex === ADMIN_HASH;
+        }
+
+        adminConfirm.addEventListener('click', function() {
+            const entered = adminPassword.value;
+            if (!entered) {
+                adminError.style.display = 'block';
+                return;
+            }
+            verifyAdminPassword(entered).then(isValid => {
+                if (isValid) {
+                    adminPopup.classList.remove('show');
+                    alert('✅ ورود به پنل مدیریت با موفقیت انجام شد.');
+                    // Admin actions can be added here
+                } else {
+                    adminError.style.display = 'block';
+                }
+            });
+        });
+
+        adminCancel.addEventListener('click', function() {
+            adminPopup.classList.remove('show');
+        });
+        adminPassword.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') adminConfirm.click();
+        });
+
+        // =============================================================
+        // GOOGLE LOGIN
+        // =============================================================
+        const GOOGLE_CLIENT_ID = 'YOUR_CLIENT_ID_HERE'; // <-- PUT YOUR CLIENT ID HERE
+
+        function loadGoogleScript() {
+            return new Promise((resolve, reject) => {
+                if (typeof google !== 'undefined' && google.accounts) {
+                    resolve();
+                    return;
+                }
+                const script = document.createElement('script');
+                script.src = 'https://accounts.google.com/gsi/client';
+                script.async = true;
+                script.defer = true;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
+        async function initGoogleLogin() {
+            try {
+                await loadGoogleScript();
+                if (typeof google !== 'undefined' && google.accounts) {
+                    google.accounts.id.initialize({
+                        client_id: GOOGLE_CLIENT_ID,
+                        callback: handleCredentialResponse,
+                        cancel_on_tap_outside: false
+                    });
+                    document.getElementById('googleLoginBtn').addEventListener('click', function() {
+                        google.accounts.id.prompt();
+                    });
+                }
+            } catch (err) {
+                console.error('Error loading Google login:', err);
+            }
+        }
+
+        function handleCredentialResponse(response) {
+            const payload = parseJwt(response.credential);
+            if (payload) {
+                const name = payload.name || 'کاربر';
+                document.getElementById('userGreeting').textContent = `👋 ${name}`;
+                document.getElementById('userGreeting').style.display = 'inline-flex';
+                document.getElementById('googleLoginBtn').style.display = 'none';
+                alert(`✅ ورود با گوگل موفق! خوش آمدید ${name}`);
+            } else {
+                alert('خطا در پردازش اطلاعات ورود.');
+            }
+        }
+
+        function parseJwt(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        if (GOOGLE_CLIENT_ID !== 'YOUR_CLIENT_ID_HERE') {
+            initGoogleLogin();
+        } else {
+            document.getElementById('googleLoginBtn').addEventListener('click', function() {
+                alert('لطفاً ابتدا کلید Client ID گوگل را در کد تنظیم کنید.');
+            });
+        }
+
+        // =============================================================
+        // SEARCH
+        // =============================================================
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            document.querySelectorAll('.product-card').forEach(card => {
+                const name = card.querySelector('h4').textContent.toLowerCase();
+                card.style.display = name.includes(query) ? '' : 'none';
+            });
+        });
+
+        // =============================================================
+        // SECURITY (Prevent right-click & F12)
+        // =============================================================
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('کلیک راست غیرفعال است.');
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+                alert('دسترسی به ابزارهای توسعه‌دهنده غیرفعال است.');
+                return false;
+            }
+        });
+
+        // =============================================================
+        // INIT
+        // =============================================================
+        updateInvoiceUI();
+        console.log('✅ سایت قهوه‌خانه زمرد با موفقیت بارگذاری شد!');
+    </script>
+</body>
+</html>
